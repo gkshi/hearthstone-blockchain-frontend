@@ -1,0 +1,67 @@
+@import "../../../assets/scss/variables";
+
+.component.-game-table {
+  position: relative;
+
+  .row {
+    display: flex;
+    grid-gap: 0;
+
+    & > * {
+      flex-grow: 1;
+      text-overflow: clip;
+      overflow: hidden;
+    }
+
+    &.-top,
+    &.-bottom {
+      width: 100%;
+      height: 14%;
+      grid-template-columns: 14% 8% 8% 8% 8% 8% 8% 8% 8% 8% 14%;
+
+      & > * {
+        width: 10%;
+
+        &:first-child,
+        &:last-child {
+          width: 14%;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    &.-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    &.-right,
+    &.-left {
+      position: absolute;
+      top: 14%;
+      z-index: 1;
+      flex-direction: column;
+      width: 14%;
+      height: calc(100% - 28%);
+      grid-template-rows: 14% 8% 8% 8% 8% 8% 8% 8% 8% 8% 14%;
+    }
+
+    &.-right {
+      right: 0;
+    }
+
+    &.-left {
+      left: 0;
+    }
+  }
+
+  .middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    transform: translate(-50%);
+  }
+}

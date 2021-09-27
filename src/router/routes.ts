@@ -18,6 +18,12 @@ export default [
   },
 
   {
+    name: 'game',
+    path: '/game',
+    private: true
+  },
+
+  {
     name: 'auth',
     path: '/auth',
     forGuests: true
