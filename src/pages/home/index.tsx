@@ -5,7 +5,7 @@ import './_index.scss'
 function HomePage () {
   return (
     <div className="page -home">
-      <div>hearthstone-blockchain-frontend</div>
+      <div>monopoly-blockchain-frontend</div>
     </div>
   )
 }
