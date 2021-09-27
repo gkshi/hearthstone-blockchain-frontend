@@ -2,13 +2,25 @@ export default [
   {
     name: 'home',
     path: '/',
-    private: false,
+    private: true,
     forGuests: false
   },
 
   {
     name: 'about',
     path: '/about'
+  },
+
+  {
+    name: 'profile',
+    path: '/profile',
+    private: true
+  },
+
+  {
+    name: 'auth',
+    path: '/auth',
+    forGuests: true
   },
 
   {

@@ -8,6 +8,8 @@ import SimpleLayout from './layouts/simple'
 // App pages
 import HomePage from './pages/home'
 import AboutPage from './pages/about'
+import ProfilePage from './pages/profile'
+import AuthPage from './pages/auth'
 import NotFoundPage from './pages/not-found'
 
 // App components
@@ -25,6 +27,10 @@ function App () {
         return <HomePage />
       case 'about':
         return <AboutPage />
+      case 'profile':
+        return <ProfilePage />
+      case 'auth':
+        return <AuthPage />
       default:
         return <NotFoundPage />
     }

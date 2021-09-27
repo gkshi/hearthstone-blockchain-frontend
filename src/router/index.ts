@@ -3,7 +3,7 @@ import browserPlugin from 'router5-plugin-browser'
 
 // middlewares and plugins
 import session from './middlewares/session'
-import accessor from './middlewares/accessor'
+import routeAccessor from './middlewares/route-accessor'
 
 // routes
 import routes from './routes'
@@ -18,7 +18,7 @@ export function configureRouter () {
   router.usePlugin(browserPlugin())
 
   // middleware
-  router.useMiddleware(session, accessor)
+  router.useMiddleware(session, routeAccessor)
 
   return router
 }

@@ -1,6 +1,6 @@
 {
   "name": "hearthstone-blockchain-frontend",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "private": true,
   "author": "George Shinkarev <gkshi@ya.ru>",
@@ -22,6 +22,7 @@
     "react-transition-group": "^4.4.2",
     "router5": "^8.0.1",
     "router5-plugin-browser": "^8.0.1",
+    "tippy.js": "^6.3.1",
     "typescript": "^4.1.2",
     "web-vitals": "^2.0.1"
   },

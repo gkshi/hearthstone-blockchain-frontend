@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router5'
+import { useStore } from 'effector-react'
+import { $auth } from '../../store/auth/store'
 
 import './_index.scss'
 
 function HeaderComponent () {
+  const user = useStore($auth).user
+
   return (
     <div className="component -header">
       <nav>
@@ -13,6 +17,9 @@ function HeaderComponent () {
         <div>
           <Link routeName="about">about</Link>
         </div>
+        {user && <div>
+          <Link routeName="profile">profile</Link>
+        </div>}
       </nav>
     </div>
   )

@@ -72,3 +72,11 @@
   height: 100%;
   overflow: auto;
 }
+
+form {
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}

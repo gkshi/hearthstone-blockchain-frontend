@@ -1,12 +1,17 @@
 import transitionPath from 'router5-transition-path'
 import { State } from 'router5/dist/types/base'
 import { Router } from 'router5/dist/types/router'
+import { $auth } from '../../store/auth/store'
+import { checkAuth } from '../../store/auth/events'
 
 import routes from '../routes'
 
-// async function _checkAuth () {
-//   //
-// }
+async function _checkAuth () {
+  const user = $auth.getState().user
+  if (!user) {
+    await checkAuth()
+  }
+}
 
 export const session = (router: Router) => (toState: State, fromState: State) => {
   const { toActivate } = transitionPath(toState, fromState)
@@ -19,7 +24,7 @@ export const session = (router: Router) => (toState: State, fromState: State) =>
     .all(onActivateHandlers.map(callback => callback()))
     // actions before app mounting
     .then(async data => {
-      // await _checkAuth()
+      await _checkAuth()
       return data
     })
     .then(data => {
