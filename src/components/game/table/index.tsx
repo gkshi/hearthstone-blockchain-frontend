@@ -16,19 +16,19 @@ function GameTableComponent () {
   })
 
   const topRow = () => {
-    return items.top.map(item => <TableItem data={item} key={item.id} />)
+    return items.top.map(item => <TableItem row="top" data={item} key={item.id} />)
   }
 
   const rightRow = () => {
-    return items.right.map(item => <TableItem data={item} key={item.id} />)
+    return items.right.map(item => <TableItem row="right" data={item} key={item.id} />)
   }
 
   const bottomRow = () => {
-    return items.bottom.map(item => <TableItem data={item} key={item.id} />)
+    return items.bottom.map(item => <TableItem row="bottom" data={item} key={item.id} />)
   }
 
   const leftRow = () => {
-    return items.left.map(item => <TableItem data={item} key={item.id} />)
+    return items.left.map(item => <TableItem row="left" data={item} key={item.id} />)
   }
 
   const fit = () => {
@@ -70,7 +70,7 @@ function GameTableComponent () {
         {leftRow()}
       </div>
 
-      <div className="middle">
+      <div className="middle flex center">
         middle
       </div>
     </div>
