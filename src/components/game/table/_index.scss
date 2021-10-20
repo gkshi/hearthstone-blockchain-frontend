@@ -4,14 +4,13 @@
   position: relative;
   flex-shrink: 0;
 
-  .row {
+  & > .row {
     display: flex;
     grid-gap: 0;
 
     & > * {
       flex-grow: 1;
       text-overflow: clip;
-      overflow: hidden;
     }
 
     &.-top,
@@ -48,6 +47,10 @@
       width: 14%;
       height: calc(100% - 28%);
       grid-template-rows: 14% 8% 8% 8% 8% 8% 8% 8% 8% 8% 14%;
+
+      & > * {
+        height: 100%;
+      }
     }
 
     &.-right {
@@ -56,6 +59,7 @@
 
     &.-left {
       left: 0;
+      flex-direction: column-reverse;
     }
   }
 

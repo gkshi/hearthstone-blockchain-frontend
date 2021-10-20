@@ -1,6 +1,10 @@
+@import "src/assets/scss/variables";
+
 .layout.-clean {
   width: 100vw;
   height: 100vh;
+  background: $color-page-bg-dark;
+  color: $color-text-light;
 
   & > main {
     width: 100%;

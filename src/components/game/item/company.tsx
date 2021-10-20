@@ -1,5 +1,6 @@
 import React from 'react'
 import { Company } from '../../../types/game'
+import { shortPrice } from '../../../helpers/currency'
 
 import './_index.scss'
 
@@ -8,20 +9,24 @@ interface GameItemProps extends React.ComponentProps<any> {
 }
 
 function GameItemComponent ({ row, data }: GameItemProps) {
-  const label = () => data
-    ? data.name || data.type
-    : 'item'
+  const icon = () => {
+    let component = null
+    try {
+      component = require(`../../icons/companies/${data.alias}.tsx`).default
+      // component = () => import(`../../icons/companies/${data.alias}.tsx`)
+    } catch (e) {}
 
-  const priceBlock = () => {
-    return data ? <div className="price">{data.price}k</div> : null
+    return component
+      ? React.createElement(component, {})
+      : null
   }
 
   return (
-    <div className={`component -table-item -row-${row}`}>
-      <div className="label flex center">
-        <div>
-          <div>{label()}</div>
-          {priceBlock()}
+    <div className="intro flex center">
+      <div>
+        <div>{icon()}</div>
+        <div className="price-block">
+          <div className="price">{shortPrice(data.price)}</div>
         </div>
       </div>
     </div>

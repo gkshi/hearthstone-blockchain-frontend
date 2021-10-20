@@ -62,6 +62,7 @@ function GameTableComponent () {
       <div className="row -top">
         <TableItem row="top" data={{ type: 'start' }} />
         {topRow()}
+        <TableItem row="top" data={{ type: 'jail' }} />
       </div>
 
       <div className="row -right">
@@ -69,7 +70,9 @@ function GameTableComponent () {
       </div>
 
       <div className="row -bottom">
+        <TableItem row="top" data={{ type: 'parking' }} />
         {bottomRow()}
+        <TableItem row="top" data={{ type: 'police' }} />
       </div>
 
       <div className="row -left">

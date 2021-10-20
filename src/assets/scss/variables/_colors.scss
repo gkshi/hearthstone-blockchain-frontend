@@ -2,32 +2,36 @@ $color-primary: #195CDC;
 $color-primary-highlight: darken($color-primary, 5%);
 
 $color-dark: #171717;
-$color-light: #f1f1f1;
+$color-light: #DEE1E3;
 $color-danger: #bf1d4a;
 $color-success: #85D79B;
 $color-warning: #FDBF61;
 
-$color-page-bg: #252A2C;
+$color-page-bg: $color-light;
+$color-page-bg-dark: #252A2C;
 $color-content-bg: #171A1B;
 $color-modal-bg: #E6E9EB;
 
 $color-text-regular: $color-dark;
 $color-text-faded: #555;
 $color-text-light: $color-light;
+$color-text-white: #fff;
 
 $color-shadow: rgba(#000, 0);
 $color-shadow-highlight: rgba(#000, .15);
 
 $color-game-table-bg: #E6E9EB;
 
-$color-red: #D82235;
-$color-yellow: #FAE915;
-$color-green: #009449;
-$color-blue: #005A86;
-$color-vinous: #9D362B;
-$color-light-blue: #81CBD5;
-$color-pink: #D9126C;
-$color-orange: #EB8E31;
+$color-item-pink: #EB87C1;
+$color-item-red: #D94553;
+$color-item-orange: #D09C27;
+$color-item-blue-green: #35BC9C;
+$color-item-vinous: #7F1F0F;
+$color-item-blue: #4B88DC;
+$color-item-green: #8BC252;
+$color-item-light-blue: #4EC2E9;
+$color-item-violet: #967ADC;
+$color-item-gray: #656D78;
 
 $color-chip-red: #D04D70;
 $color-chip-red-dark: #A5193F;

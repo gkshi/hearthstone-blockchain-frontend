@@ -9,18 +9,18 @@ interface GameItemProps extends React.ComponentProps<any> {
   data?: ItemData | Company
 }
 
-function GameItemComponent ({ row, data }: GameItemProps) {
-  if (data.type === 'company') {
-    return <CompanyItem data={data as Company} />
+function GameItemWrapper ({ row, data }: GameItemProps) {
+  const className = () => {
+    return `component -table-item -row-${row} ${'color' in data ? '-color-' + data.color : ''}`
   }
 
   return (
-    <div className={`component -table-item -row-${row}`}>
-      <div className="label flex center">
-        <div>item</div>
-      </div>
+    <div className={className()}>
+      {data.type === 'company'
+        ? <CompanyItem data={data as Company} row={row}/>
+        : <div className="intro flex center">item</div>}
     </div>
   )
 }
 
-export default GameItemComponent
+export default GameItemWrapper
