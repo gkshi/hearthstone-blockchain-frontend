@@ -61,6 +61,17 @@
         }
       }
     }
+
+    &-dark {
+      & > * {
+        background: $color-content-bg;
+        color: $color-text-light;
+
+        &:hover {
+          background: darken($color-content-bg, 5%);
+        }
+      }
+    }
   }
 
   &.-size {
@@ -92,12 +103,6 @@
           }
         }
       }
-    }
-  }
-
-  &.-full-width {
-    & > * {
-      width: 100%;
     }
   }
 

@@ -1,0 +1,9 @@
+@import "src/assets/scss/variables";
+
+.component.-game-players {
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}

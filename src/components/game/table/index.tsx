@@ -50,11 +50,17 @@ function GameTableComponent () {
 
   useEffect(() => {
     fit()
+    window.addEventListener('resize', fit)
+
+    return () => {
+      window.removeEventListener('resize', fit)
+    }
   }, [])
 
   return (
     <div className="component -game-table" style={tableStyle()}>
       <div className="row -top">
+        <TableItem row="top" data={{ type: 'start' }} />
         {topRow()}
       </div>
 

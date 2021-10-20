@@ -1,0 +1,23 @@
+@import "src/assets/scss/variables";
+
+.component.-game-menu {
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .button {
+    width: 100%;
+
+    & > * {
+      width: 100%;
+    }
+  }
+
+  .hover-danger {
+    &:hover {
+      background: $color-danger;
+    }
+  }
+}

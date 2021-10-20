@@ -1,15 +1,11 @@
 @import "../../../assets/scss/variables";
 
 .component.-table-item {
-  border: 1px solid;
+  margin: 1px;
   font-size: 10px;
   line-height: 10px;
-
-  .label {
-    width: 100%;
-    height: 100%;
-    padding: 4px;
-  }
+  background: $color-game-table-bg;
+  color: $color-text-regular;
 
   .price {
     margin-top: 4px;
@@ -24,7 +20,7 @@
     &.-red {
       background: $color-red;
     }
-    &.-yellow {
+    &.-orange {
       background: $color-yellow;
     }
     &.-green {
@@ -44,68 +40,6 @@
     }
     &.-orange {
       background: $color-orange;
-    }
-  }
-
-  &.-row {
-    &-right,
-    &-left {
-      display: flex;
-      align-items: center;
-
-      .color {
-        width: 20%;
-        height: 100%;
-      }
-    }
-
-    &-top {
-      display: flex;
-      writing-mode: vertical-rl;
-      flex-direction: row-reverse;
-
-      &:first-child,
-      &:last-child {
-        .label {
-          transform: rotate(-45deg);
-        }
-      }
-
-      .color {
-        border-top: 1px solid;
-      }
-    }
-
-    &-right {
-      flex-direction: row;
-
-      .color {
-        border-right: 1px solid;
-      }
-    }
-
-    &-bottom {
-      display: flex;
-      writing-mode: vertical-rl;
-
-      &:first-child,
-      &:last-child {
-        .label {
-          transform: rotate(-45deg);
-        }
-      }
-
-      .color {
-        border-bottom: 1px solid;
-      }
-    }
-
-    &-left {
-      flex-direction: row-reverse;
-
-      .color {
-        border-left: 1px solid;
-      }
     }
   }
 }

@@ -1,274 +1,54 @@
-import { Item } from '../types/game'
+import { Item, Company } from '../types/game'
 
 export const items = {
   top: [
     {
-      id: 'free_parking',
-      type: 'event',
-      name: 'Бесплатная стоянка'
-    },
-    {
-      id: 'place_1',
-      type: 'place',
-      name: 'ул. Тверская',
-      color: 'red',
-      price: '220'
-    },
-    {
-      id: 'chance_1',
-      type: 'event',
-      name: 'Шанс'
-    },
-    {
-      id: 'place_2',
-      type: 'place',
-      name: 'Пушкинская ул.',
-      color: 'red',
-      price: '220'
-    },
-    {
-      id: 'place_3',
-      type: 'place',
-      name: 'пл. Маяковского',
-      color: 'red',
-      price: '240'
-    },
-    {
       id: 'company_1',
+      alias: 'chanel',
+      name: 'Chanel',
       type: 'company',
-      name: 'Казанская железная дорога',
-      price: '200'
-    },
-    {
-      id: 'place_4',
-      type: 'place',
-      name: 'ул. Грузинский вал',
-      color: 'yellow',
-      price: '260'
-    },
-    {
-      id: 'place_5',
-      type: 'place',
-      name: 'ул. Чайковского',
-      color: 'yellow',
-      price: '260'
-    },
-    {
-      id: 'company_2',
-      type: 'company',
-      name: 'Водопровод',
-      price: '150'
-    },
-    {
-      id: 'place_6',
-      type: 'place',
-      name: 'Смоленская пл.',
-      color: 'yellow',
-      price: '280'
-    },
-    {
-      id: 'go_to_jail',
-      type: 'event',
-      name: 'Отправляйтесь в тюрьму'
+      color: 'orange',
+      price: 60
     }
   ],
 
   right: [
     {
-      id: 'place_7',
-      type: 'place',
-      name: 'ул. Щусева',
-      color: 'green',
-      price: '300'
-    },
-    {
-      id: 'place_8',
-      type: 'place',
-      name: 'Гоголевский бульвар',
-      color: 'green',
-      price: '300'
-    },
-    {
-      id: 'community_chest_1',
-      type: 'event',
-      name: 'Общественная казна'
-    },
-    {
-      id: 'place_9',
-      type: 'place',
-      name: 'Кутузовский проспект',
-      color: 'green',
-      price: '320'
-    },
-    {
-      id: 'company_3',
+      id: 'company_7',
+      alias: 'vk',
+      name: 'VK',
       type: 'company',
-      name: 'Ленинградская железная дорога',
-      price: '200'
-    },
-    {
-      id: 'chance_2',
-      type: 'event',
-      name: 'Шанс'
-    },
-    {
-      id: 'place_10',
-      type: 'place',
-      name: 'ул. Малая Бронная',
-      color: 'blue',
-      price: '350'
-    },
-    {
-      id: 'luxury_tax',
-      type: 'event',
-      name: 'Сверхналог',
-      price: '100'
-    },
-    {
-      id: 'place_11',
-      type: 'place',
-      name: 'ул. Арбат',
-      color: 'blue',
-      price: '400'
+      color: 'blue-green',
+      price: 140
     }
   ],
 
   bottom: [
     {
-      id: 'go',
-      type: 'event',
-      name: 'Получи зарплату, проходя это поле'
-    },
-    {
-      id: 'place_12',
-      type: 'place',
-      name: 'Житная ул.',
-      color: 'vinous',
-      price: '60'
-    },
-    {
-      id: 'community_chest_2',
-      type: 'event',
-      name: 'Общественная казна'
-    },
-    {
-      id: 'place_13',
-      type: 'place',
-      name: 'Нагатинская ул.',
-      color: 'vinous',
-      price: '60'
-    },
-    {
-      id: 'income_tax',
-      type: 'event',
-      name: 'Подоходный налог',
-      price: '200'
-    },
-    {
-      id: 'company_4',
+      id: 'company_15',
+      alias: 'aeroflot',
+      name: 'Aeroflot',
       type: 'company',
-      name: 'Рижская железная дорога',
-      price: '200'
-    },
-    {
-      id: 'place_14',
-      type: 'place',
-      name: 'Варшавское шоссе',
-      color: 'light-blue',
-      price: '100'
-    },
-    {
-      id: 'chance_3',
-      type: 'event',
-      name: 'Шанс'
-    },
-    {
-      id: 'place_15',
-      type: 'place',
-      name: 'ул. Огарева',
-      color: 'light-blue',
-      price: '100'
-    },
-    {
-      id: 'place_16',
-      type: 'place',
-      name: 'Первая Парковая ул.',
-      color: 'light-blue',
-      price: '120'
-    },
-    {
-      id: 'just_visiting',
-      type: 'event',
-      name: 'Просто посетители'
+      color: 'green',
+      price: 220
     }
   ],
 
   left: [
     {
-      id: 'place_17',
-      type: 'place',
-      name: 'ул. Полянка',
-      color: 'orange',
-      price: '140'
-    },
-    {
-      id: 'company_5',
+      id: 'company_23',
+      alias: 'youtube',
+      name: 'YouTube',
       type: 'company',
-      name: 'Электростанция',
-      price: '150'
-    },
-    {
-      id: 'place_18',
-      type: 'place',
-      name: 'ул. Сретенка',
-      color: 'pink',
-      price: '140'
-    },
-    {
-      id: 'place_19',
-      type: 'place',
-      name: 'Ростовская наб.',
-      color: 'pink',
-      price: '160'
-    },
-    {
-      id: 'company_6',
-      type: 'company',
-      name: 'Курская железная дорога',
-      price: '200'
-    },
-    {
-      id: 'place_20',
-      type: 'place',
-      name: 'Рязанский проспект',
-      color: 'pink',
-      price: '180'
-    },
-    {
-      id: 'community_chest_3',
-      type: 'event',
-      name: 'Общественная казна'
-    },
-    {
-      id: 'place_21',
-      type: 'place',
-      name: 'ул. Вавилова',
-      color: 'orange',
-      price: '180'
-    },
-    {
-      id: 'place_22',
-      type: 'place',
-      name: 'Рублевское шоссе',
-      color: 'orange',
-      price: '200'
+      color: 'violet',
+      price: 300
     }
   ]
 } as {
-  top: Item[],
-  right: Item[],
-  bottom: Item[],
-  left: Item[]
+  top: Item[] | Company[],
+  right: Item[] | Company[],
+  bottom: Item[] | Company[],
+  left: Item[] | Company[]
 }
 
 export function getItems (query: string | object): Item[] {

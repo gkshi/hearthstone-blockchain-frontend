@@ -1,23 +1,28 @@
 import React from 'react'
-import { Company, ItemData } from '../../../types/game'
-import CompanyItem from './company'
+import { Company } from '../../../types/game'
 
 import './_index.scss'
 
 interface GameItemProps extends React.ComponentProps<any> {
-  row?: 'top' | 'right' | 'bottom' | 'left',
-  data?: ItemData | Company
+  data?: Company
 }
 
 function GameItemComponent ({ row, data }: GameItemProps) {
-  if (data.type === 'company') {
-    return <CompanyItem data={data as Company} />
+  const label = () => data
+    ? data.name || data.type
+    : 'item'
+
+  const priceBlock = () => {
+    return data ? <div className="price">{data.price}k</div> : null
   }
 
   return (
     <div className={`component -table-item -row-${row}`}>
       <div className="label flex center">
-        <div>item</div>
+        <div>
+          <div>{label()}</div>
+          {priceBlock()}
+        </div>
       </div>
     </div>
   )

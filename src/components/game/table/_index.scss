@@ -2,7 +2,7 @@
 
 .component.-game-table {
   position: relative;
-  background: $color-game-table-bg;
+  flex-shrink: 0;
 
   .row {
     display: flex;
@@ -67,6 +67,5 @@
     transform: translate(-50%, -50%);
     width: 72%;
     height: 72%;
-    border: 1px solid;
   }
 }
