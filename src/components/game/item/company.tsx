@@ -4,11 +4,11 @@ import { shortPrice } from '../../../helpers/currency'
 
 import './_index.scss'
 
-interface GameItemProps extends React.ComponentProps<any> {
+interface CompanyGameItemProps extends React.ComponentProps<any> {
   data?: Company
 }
 
-function GameItemComponent ({ row, data }: GameItemProps) {
+function CompanyGameItemComponent ({ row, data }: CompanyGameItemProps) {
   const icon = () => {
     let component = null
     try {
@@ -33,4 +33,4 @@ function GameItemComponent ({ row, data }: GameItemProps) {
   )
 }
 
-export default GameItemComponent
+export default CompanyGameItemComponent
