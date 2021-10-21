@@ -1,0 +1,75 @@
+@import "src/assets/scss/variables";
+
+.component.-game-chip {
+  position: absolute;
+  z-index: 1;
+
+  .chip {
+    position: relative;
+    z-index: 1;
+    width: 22px;
+    height: 22px;
+    background: $color-text-regular;
+    border-radius: 50%;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .4);
+  }
+
+  &.-color {
+    &-red {
+      .chip {
+        background: $color-chip-red;
+      }
+      &:after {
+        background: $color-chip-red-dark;
+      }
+    }
+
+    &-green {
+      .chip {
+        background: $color-chip-green;
+      }
+      &:after {
+        background: $color-chip-green-dark;
+      }
+    }
+
+    &-blue {
+      .chip {
+        background: $color-chip-blue;
+      }
+      &:after {
+        background: $color-chip-blue-dark;
+      }
+    }
+
+    &-violet {
+      .chip {
+        background: $color-chip-violet;
+      }
+      &:after {
+        background: $color-chip-violet-dark;
+      }
+    }
+
+    &-yellow {
+      .chip {
+        background: $color-chip-yellow;
+      }
+      &:after {
+        background: $color-chip-yellow-dark;
+      }
+    }
+  }
+}

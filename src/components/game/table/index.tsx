@@ -3,6 +3,8 @@ import { nextTick } from '../../../helpers/next-tick'
 import { items } from '../../../config/items'
 
 import TableItem from '../item'
+import GameChips from '../chips'
+import GameLogs from '../logs'
 
 import './_index.scss'
 
@@ -59,6 +61,8 @@ function GameTableComponent () {
 
   return (
     <div className="component -game-table" style={tableStyle()}>
+      <GameChips />
+
       <div className="row -top">
         <TableItem row="top" data={{ type: 'start' }} />
         {topRow()}
@@ -80,7 +84,7 @@ function GameTableComponent () {
       </div>
 
       <div className="middle flex center">
-        middle
+        <GameLogs />
       </div>
     </div>
   )
