@@ -6,7 +6,7 @@ import './_index.scss'
 
 function ChanceGameItemComponent () {
   return (
-    <div className="intro flex column center">
+    <div className="component intro flex column center">
       <IconChance />
       <div className="label">Chance</div>
     </div>

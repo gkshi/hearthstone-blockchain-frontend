@@ -6,7 +6,7 @@ import './_index.scss'
 
 function TaxGameItemComponent () {
   return (
-    <div className="intro flex column center">
+    <div className="component intro flex column center">
       <IconMoney />
       <div className="label">Tax</div>
     </div>

@@ -1,12 +1,14 @@
 import React from 'react'
 import { Company, ItemData } from '../../../types/game'
-import { shortPrice } from '../../../helpers/currency'
 
 import CompanyItem from './company'
 import StartItem from './start'
 import CommunityChestItem from './community-chest'
 import ChanceItem from './chance'
 import TaxItem from './tax'
+import ParkingItem from './parking'
+import PoliceItem from './police'
+import JailItem from './jail'
 
 import './_index.scss'
 
@@ -27,6 +29,9 @@ function GameItemWrapper ({ row, data }: GameItemProps) {
       {data.type === 'chest' ? <CommunityChestItem /> : null}
       {data.type === 'chance' ? <ChanceItem /> : null}
       {data.type === 'tax' ? <TaxItem /> : null}
+      {data.type === 'parking' ? <ParkingItem /> : null}
+      {data.type === 'police' ? <PoliceItem /> : null}
+      {data.type === 'jail' ? <JailItem /> : null}
     </div>
   )
 }

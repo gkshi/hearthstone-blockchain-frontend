@@ -22,7 +22,7 @@ function CompanyGameItemComponent ({ row, data }: CompanyGameItemProps) {
   }
 
   return (
-    <div className="intro flex center">
+    <div className="component intro flex center">
       <div>
         <div>{icon()}</div>
         <div className="price-block">

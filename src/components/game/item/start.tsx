@@ -7,7 +7,7 @@ import './_index.scss'
 
 function StartGameItemComponent () {
   return (
-    <div className="intro flex column center">
+    <div className="component intro flex column center">
       <IconRocket />
       <div className="label">Collect {shortPrice(2000000)}</div>
     </div>
