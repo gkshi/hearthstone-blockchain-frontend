@@ -1,6 +1,12 @@
 Changelog
 =========
 
+### 0.3.1 (2021-10-28)
+* Game state added.
+* Player list is from state using.
+* Chip list is from state using.
+
+
 ### 0.3.0 (2021-10-20)
 * UI updated to v2
 
