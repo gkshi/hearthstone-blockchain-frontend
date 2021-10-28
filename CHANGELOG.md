@@ -1,6 +1,11 @@
 Changelog
 =========
 
+### 0.3.2 (2021-10-28)
+* Notifications module added.
+* Socket state module added.
+
+
 ### 0.3.1 (2021-10-28)
 * Game state added.
 * Player list is from state using.
