@@ -4,6 +4,7 @@ import { items } from '../../../config/items'
 
 import TableItem from '../item'
 import GameChips from '../chips'
+import GameModals from '../modals'
 import GameLogs from '../logs'
 
 import './_index.scss'
@@ -84,6 +85,7 @@ function GameTableComponent () {
       </div>
 
       <div className="middle flex center">
+        <GameModals />
         <GameLogs />
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { createStore } from 'effector'
-import { startGame, resetGame } from './events'
-import { State } from './types'
+import { startGame, resetGame, showGameModal } from './events'
+import { Modal, State } from './types'
 import {
   generateChipSet,
   generatePlayerSet,
@@ -14,6 +14,7 @@ const initialState = (): State => ({
 
   currentPlayer: null,
   activePlayer: null,
+  modal: null,
 
   turn: 0
 })
@@ -30,6 +31,11 @@ export const $game = createStore<State>(initialState())
   .on(resetGame, (state) => {
     console.log('# reset game')
     return initialState()
+  })
+  .on(showGameModal, (state, data) => {
+    console.log('# show modal')
+    const modal = new Modal(data)
+    return { ...state, modal }
   })
 
 export default $game

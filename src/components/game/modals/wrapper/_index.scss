@@ -1,0 +1,23 @@
+@import "src/assets/scss/variables";
+
+.component.-game-modal-wrapper {
+  padding: 24px 30px 20px;
+  background: $color-modal-bg;
+  color: $color-text-regular;
+  border-radius: $border-radius-default;
+
+  .heading {
+    margin: 0 0 5px;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: $font-weight-bold;
+  }
+
+  .button {
+    margin-top: 20px;
+    width: 100%;
+    & > * {
+      width: 100%;
+    }
+  }
+}

@@ -16,6 +16,24 @@ export interface Field extends Item {
   //
 }
 
+export type ModalType = 'turn' | 'buying' | 'tax'
+
+export interface ModalProps {
+  id?: string,
+  type?: ModalType
+}
+
+export interface Modal {
+  type: ModalType
+}
+
+// eslint-disable-next-line no-redeclare
+export class Modal {
+  constructor (props) {
+    this.type = props.type
+  }
+}
+
 export interface State {
   players: Player[],
   chips: Chip[],
@@ -23,6 +41,7 @@ export interface State {
 
   currentPlayer: Player | null,
   activePlayer: Player | null,
+  modal: Modal,
 
   turn: number
 }

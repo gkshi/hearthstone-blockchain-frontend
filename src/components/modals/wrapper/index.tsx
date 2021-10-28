@@ -83,7 +83,8 @@ function ModalWrapper (props: ModalWrapperProps) {
       in={show}
       timeout={0}
       classNames="modal"
-      unmountOnExit>
+      unmountOnExit
+    >
       <div className={classList} onClick={onParentClick}>
         <dialog open className="dialog">
           {isClosable() && <div className="close" onClick={close}>

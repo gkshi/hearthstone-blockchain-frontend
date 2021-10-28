@@ -1,0 +1,11 @@
+@import "src/assets/scss/variables";
+
+.component.-game-modals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 100%;
+  padding: 20px;
+  background: $color-page-bg-dark;
+}
