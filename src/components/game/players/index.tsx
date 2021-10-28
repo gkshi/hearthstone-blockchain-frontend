@@ -1,47 +1,16 @@
 import React from 'react'
-import { Player } from '../../../types/game'
+import { useStore } from 'effector-react'
+import $game from '../../../store/game/store'
 
 import GamePlayer from '../player'
 
 import './_index.scss'
 
 function GamePlayersComponent () {
-  const list = [
-    {
-      id: 1,
-      name: 'player1',
-      color: 'red',
-      balance: 15000
-    },
-    {
-      id: 2,
-      name: 'player2',
-      color: 'green',
-      balance: 15000
-    },
-    {
-      id: 3,
-      name: 'player3',
-      color: 'blue',
-      balance: 15000,
-      photo: 'https://avatars.githubusercontent.com/u/499550?v=4'
-    },
-    {
-      id: 4,
-      name: 'player4',
-      color: 'violet',
-      balance: 15000
-    },
-    {
-      id: 5,
-      name: 'player5',
-      color: 'yellow',
-      balance: 15000
-    }
-  ] as Player[]
+  const players = useStore($game).players
 
   const playerList = () => {
-    return list.map(player => <GamePlayer data={player} key={player.id} />)
+    return players.map(player => <GamePlayer data={player} key={player._id} />)
   }
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Company } from '../../../types/game'
-import { shortPrice } from '../../../helpers/currency'
+import { shortCurrencyValue } from '../../../helpers/currency'
 
 import './_index.scss'
 
@@ -26,7 +26,7 @@ function CompanyGameItemComponent ({ row, data }: CompanyGameItemProps) {
       <div>
         <div>{icon()}</div>
         <div className="price-block">
-          <div className="price">{shortPrice(data.price)}</div>
+          <div className="price">{shortCurrencyValue(data.price)}</div>
         </div>
       </div>
     </div>

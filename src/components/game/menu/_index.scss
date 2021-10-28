@@ -7,6 +7,15 @@
     }
   }
 
+  .system-menu {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      display: block;
+    }
+  }
+
   .button {
     width: 100%;
 

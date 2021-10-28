@@ -12,7 +12,7 @@ interface LoginFormOptions {
   onRegisterShow?: () => void
 }
 
-function Index ({ onRegisterShow }: LoginFormOptions) {
+function LoginForm ({ onRegisterShow }: LoginFormOptions) {
   const [loginUsername, setLoginUsername] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
   const [usernameError, setUsernameError] = useState('')
@@ -145,4 +145,4 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
   )
 }
 
-export default Index
+export default LoginForm

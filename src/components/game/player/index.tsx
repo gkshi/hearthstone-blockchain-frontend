@@ -1,5 +1,6 @@
 import React from 'react'
 import { Player } from '../../../types/game'
+import { shortCurrencyValue } from '../../../helpers/currency'
 
 import './_index.scss'
 
@@ -18,7 +19,7 @@ function GamePlayerComponent ({ data }: GamePlayerProps) {
 
       <div className="middle">
         <div className="name">{data.name}</div>
-        <div className="balance">{data.balance} ETH</div>
+        <div className="balance">{shortCurrencyValue(data.balance)}</div>
       </div>
 
       <div className="right">

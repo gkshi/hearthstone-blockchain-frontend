@@ -7,6 +7,14 @@
   color: $color-text-light;
   overflow: hidden;
 
+  a {
+    color: $color-text-light;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
   .game-aside {
     width: 300px;
     height: calc(100% - 40px);

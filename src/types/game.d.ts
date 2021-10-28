@@ -1,21 +1,14 @@
 export type ID = number | string
-
 export type Price = number | string
 
-// export enum ItemType {
-//   Start = 'start',
-//   Company = 'company',
-//   CommunityChest = 'chest',
-//   Tax = 'tax',
-//   Chance = 'chance',
-//   Jail = 'jail',
-//   Parking = 'parking',
-//   Police = 'police'
-// }
+export type ItemType = 'start' | 'company' | 'chest' | 'tax' | 'chance' | 'jail' | 'parking' | 'police'
+export type ItemColor = 'pink' | 'red' | 'orange' | 'blue-green' | 'vinous' | 'blue' | 'green' | 'light-blue' | 'violet' | 'gray'
+
+export type PlayerColor = 'red' | 'yellow' | 'green' | 'blue' | 'violet'
 
 export interface Item {
   id: ID,
-  type: 'start' | 'company' | 'chest' | 'tax' | 'chance' | 'jail' | 'parking' | 'police'
+  type: ItemType
 }
 
 export interface ItemData {
@@ -26,14 +19,14 @@ export interface ItemData {
 export interface Company extends Item {
   alias: string,
   name: string,
-  color: 'pink' | 'red' | 'orange' | 'blue-green' | 'vinous' | 'blue' | 'green' | 'light-blue' | 'violet' | 'gray',
+  color: ItemColor,
   price?: Price
 }
 
 export interface Player {
-  id: ID,
+  _id: ID,
   name?: string,
-  color: 'red' | 'yellow' | 'green' | 'blue' | 'violet',
+  color: PlayerColor,
   balance?: Price,
   photo?: string
 }
