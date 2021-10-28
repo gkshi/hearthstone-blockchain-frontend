@@ -3,6 +3,7 @@ import { State } from 'router5/dist/types/base'
 import { Router } from 'router5/dist/types/router'
 import { $auth } from '../../store/auth/store'
 import { checkAuth } from '../../store/auth/events'
+import { connect as _connectSocket } from '../../api/socket'
 
 import routes from '../routes'
 
@@ -25,6 +26,7 @@ export const session = (router: Router) => (toState: State, fromState: State) =>
     // actions before app mounting
     .then(async data => {
       await _checkAuth()
+      await _connectSocket()
       return data
     })
     .then(data => {

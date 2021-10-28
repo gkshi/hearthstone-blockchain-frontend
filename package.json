@@ -22,6 +22,7 @@
     "react-transition-group": "^4.4.2",
     "router5": "^8.0.1",
     "router5-plugin-browser": "^8.0.1",
+    "socket.io-client": "^4.3.2",
     "tippy.js": "^6.3.2",
     "web-vitals": "^2.1.2"
   },
