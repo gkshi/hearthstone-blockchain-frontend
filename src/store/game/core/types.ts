@@ -1,4 +1,4 @@
-import { ID, Item, PlayerColor } from '../../../types/game'
+import { ID } from '../../../types/game'
 import { Player } from '../players/types'
 
 export type GameRules = 'classic'
@@ -8,13 +8,8 @@ export interface GameData {
   clients: any[]
 }
 
-export interface Chip {
-  _id: ID
-  color: PlayerColor
-}
-
-export interface Field extends Item {
-  //
+export interface Field {
+  id: ID
 }
 
 export type ModalType = 'turn' | 'buying' | 'tax'
@@ -39,7 +34,6 @@ export type DiceProps = [number, number] | []
 
 export interface State {
   players: Player[],
-  chips: Chip[],
   fields: Field[],
 
   currentPlayer: Player | null,

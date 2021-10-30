@@ -1,6 +1,8 @@
 import { chipColors } from '../config/chips'
 import { gameConfig } from '../config/game'
 import { Player } from '../store/game/players/types'
+import { Chip } from '../store/game/chips/types'
+import { getAllItems, systemItems } from '../config/items'
 
 export const getGameConfig = (rules) => {
   return gameConfig[rules]
@@ -10,13 +12,17 @@ export const generateChipSet = length => {
   const set = []
 
   for (let i = 0; i < length; i++) {
-    set.push({
+    set.push(new Chip({
       _id: i,
       color: chipColors[i]
-    })
+    }))
   }
 
   return set
+}
+
+export const generateFieldSet = () => {
+  return getAllItems()
 }
 
 export const generatePlayerSet = (clients, initialBalance) => {

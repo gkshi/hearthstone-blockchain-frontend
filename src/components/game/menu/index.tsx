@@ -19,7 +19,7 @@ function GameMenuComponent () {
 
   const setActivePlayer = (e) => {
     e.preventDefault()
-    _setActivePlayer(4)
+    _setActivePlayer(1)
   }
 
   const startGame = (e) => {
@@ -30,20 +30,20 @@ function GameMenuComponent () {
         {
           _id: 1,
           name: 'player1'
-        },
-        {
-          _id: 2,
-          name: 'player2'
-        },
-        {
-          _id: 3,
-          name: 'player3',
-          photo: 'https://avatars.githubusercontent.com/u/499550?v=4'
-        },
-        {
-          _id: 4,
-          name: 'player4'
         }
+        // {
+        //   _id: 2,
+        //   name: 'player2'
+        // },
+        // {
+        //   _id: 3,
+        //   name: 'player3',
+        //   photo: 'https://avatars.githubusercontent.com/u/499550?v=4'
+        // },
+        // {
+        //   _id: 4,
+        //   name: 'player4'
+        // }
       ]
     })
   }

@@ -1,5 +1,6 @@
 import { createStore } from 'effector'
 import {
+  initGame,
   startGame,
   resetGame,
   showGameModal,
@@ -9,14 +10,11 @@ import {
 } from './events'
 import { setLog } from '../../logs/events'
 import { Modal, State } from './types'
-import {
-  generateChipSet,
-  getGameConfig
-} from '../../../helpers/game'
+import { generateFieldSet, getGameConfig } from '../../../helpers/game'
 import { setActivePlayer, setPlayerSet } from '../players/events'
+import { setChipSet } from '../chips/events'
 
 const initialState = (): State => ({
-  chips: [],
   fields: [],
   players: [],
 
@@ -33,13 +31,19 @@ const initialState = (): State => ({
 })
 
 export const $game = createStore<State>(initialState())
+  .on(initGame, (state, data) => {
+    setLog('Game inited.')
+    const fields = generateFieldSet()
+    console.log('#fields', fields)
+    return { ...state, fields }
+  })
+
   .on(startGame, (state, data) => {
     setLog('Game started.')
-
-    // general
+    // config
     const gameConfig = getGameConfig(data.rules)
-    // chips
-    const chips = generateChipSet(5)
+    setChipSet(data.clients.length)
+
     // players
     const initialBalance = gameConfig.initialBalance
     setPlayerSet({
@@ -48,19 +52,23 @@ export const $game = createStore<State>(initialState())
     })
     setActivePlayer(data.clients[0]._id)
 
-    return { ...state, chips }
+    return state
   })
+
   .on(resetGame, (state) => {
     setLog('Игра сброшена.')
     return initialState()
   })
+
   .on(showGameModal, (state, data) => {
     const modal = new Modal(data)
     return { ...state, modal }
   })
+
   .on(hideGameModal, (state) => {
     return { ...state, modal: null }
   })
+
   .on(rollTheDice, (state, values) => {
     setLog('Брошены кости.')
     return {
@@ -68,6 +76,7 @@ export const $game = createStore<State>(initialState())
       dices: { show: true, values }
     }
   })
+
   .on(hideDices, (state) => {
     return {
       ...state,

@@ -275,6 +275,41 @@ export const items = {
   left: Item[] | Company[]
 }
 
+export const systemItems = [
+  {
+    id: 'start',
+    alias: 'start',
+    type: 'start'
+  },
+  {
+    id: 'jail',
+    alias: 'jail',
+    type: 'jail'
+  },
+  {
+    id: 'police',
+    alias: 'police',
+    type: 'police'
+  },
+  {
+    id: 'parking',
+    alias: 'parking',
+    type: 'parking'
+  }
+]
+
+export function getAllItems () {
+  return [
+    systemItems[0],
+    ...items.top,
+    systemItems[1],
+    ...items.right,
+    systemItems[2],
+    ...items.bottom,
+    systemItems[3],
+    ...items.left]
+}
+
 export function getItems (query: string | object): Item[] {
   if (typeof query === 'string') {
     query = { id: query }

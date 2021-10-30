@@ -77,7 +77,7 @@ function GameDiceComponent () {
 
       platform.style.transform = 'translate3d(-180px,0, 0px)'
       platform2.style.transform = 'translate3d(180px,0, 0px)'
-    }, 700)
+    }, 600)
   }
 
   useEffect(() => {
