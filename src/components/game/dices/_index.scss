@@ -14,7 +14,7 @@
     transform: scale(.5);
   }
 
-  #platform > .dice {
+  .platform > .dice {
     &:first-child {
       margin-right: 400px;
     }
@@ -23,17 +23,19 @@
     }
   }
 
-  #platform.playing > .dice {
+  .platform.playing > .dice {
     animation-duration: 1s;
   }
-  #platform.playing {
-    //width:200px;
-    //height:200px;
+  .platform.playing {
     transform-style: preserve-3d;
     animation: roll 1s infinite linear;
   }
-  #platform.stop > .dice,
-  #platform.stop {
+  #platform2.platform.playing {
+    transform-style: preserve-3d;
+    animation: roll2 1s infinite linear;
+  }
+  .platform.stop > .dice,
+  .platform.stop {
     animation-play-state: paused;
   }
   #wrapper {
@@ -43,7 +45,7 @@
     margin: 0 auto;
     perspective: 1200px;
   }
-  #platform {
+  .platform {
     position: absolute;
     top: 0;
     left: 0;
@@ -66,7 +68,7 @@
     transform-style: preserve-3d;
     transform: rotateX(0deg) rotateY(20deg) rotateZ(-20deg);
   }
-  #platform.playing > .dice {
+  .platform.playing > .dice {
     &:first-child {
       animation: spin 2s infinite linear;
     }
@@ -200,14 +202,26 @@
   }
 
   @keyframes roll {
-    0% { transform: translate3d(-200px,-50px,-400px) }
-    12% { transform: translate3d(0px,0,-100px) }
-    25% { transform: translate3d(200px,-50px,-400px) }
-    37% { transform: translate3d(0px,-100px,-800px) }
-    50% { transform: translate3d(-200px,-50px,-400px) }
-    62% { transform: translate3d(0px,0,-100px) }
-    75% { transform: translate3d(200px,-50px,-400px) }
-    87% { transform: translate3d(0px,-100px,-800px) }
-    100% { transform: translate3d(-200px,-50px,-400px) }
+    0% { transform: translate3d(-400px,-50px,-400px) }
+    12% { transform: translate3d(-200px,0,-100px) }
+    25% { transform: translate3d(0px,-50px,-400px) }
+    37% { transform: translate3d(-200px,-100px,-800px) }
+    50% { transform: translate3d(-400px,-50px,-400px) }
+    62% { transform: translate3d(-200px,0,-100px) }
+    75% { transform: translate3d(0px,-50px,-400px) }
+    87% { transform: translate3d(-200px,-100px,-800px) }
+    100% { transform: translate3d(-400px,-50px,-400px) }
+  }
+
+  @keyframes roll2 {
+    0% { transform: translate3d(0px,-200px,-400px) }
+    12% { transform: translate3d(100px,-150px,-100px) }
+    25% { transform: translate3d(300px,-100px,-400px) }
+    37% { transform: translate3d(200px,-50px,-800px) }
+    50% { transform: translate3d(0px,0px,-400px) }
+    62% { transform: translate3d(100px,-50px,-100px) }
+    75% { transform: translate3d(300px,-100px,-400px) }
+    87% { transform: translate3d(200px,-150px,-800px) }
+    100% { transform: translate3d(0px,-200px,-400px) }
   }
 }

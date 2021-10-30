@@ -59,16 +59,24 @@ function GameDiceComponent () {
     platform.classList.remove('stop')
     platform.classList.add('playing')
 
+    const platform2 = document.getElementById('platform2')
+    platform2.classList.remove('stop')
+    platform2.classList.add('playing')
+
     setTimeout(function () {
       platform.classList.remove('playing')
       platform.classList.add('stop')
+
+      platform2.classList.remove('playing')
+      platform2.classList.add('stop')
 
       const dice1 = document.getElementById('dice1')
       setDiceValue(storedDices.values[0], dice1)
       const dice2 = document.getElementById('dice2')
       setDiceValue(storedDices.values[1], dice2)
 
-      platform.style.transform = 'translate3d(0,0, 0px)'
+      platform.style.transform = 'translate3d(-180px,0, 0px)'
+      platform2.style.transform = 'translate3d(180px,0, 0px)'
     }, 800)
   }
 
@@ -96,7 +104,7 @@ function GameDiceComponent () {
     >
       <div className="component -game-dice">
         <div className="intro">
-          <div id="platform" className="flex center">
+          <div id="platform" className="platform flex center">
             <div className="dice" id="dice1">
               <div className="side front">
                 <div className="dot center"></div>
@@ -141,6 +149,8 @@ function GameDiceComponent () {
               <div className="side cover y"></div>
               <div className="side cover z"></div>
             </div>
+          </div>
+          <div id="platform2" className="platform flex center">
             <div className="dice" id="dice2">
               <div className="side front">
                 <div className="dot center"></div>
