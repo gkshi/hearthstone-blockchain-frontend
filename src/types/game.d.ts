@@ -22,11 +22,3 @@ export interface Company extends Item {
   color: ItemColor,
   price?: Price
 }
-
-export interface Player {
-  _id: ID,
-  name?: string,
-  color: PlayerColor,
-  balance?: Price,
-  photo?: string
-}

@@ -1,4 +1,5 @@
-import { ID, Item, Player, PlayerColor } from '../../types/game'
+import { ID, Item, PlayerColor } from '../../../types/game'
+import { Player } from '../players/types'
 
 export type GameRules = 'classic'
 

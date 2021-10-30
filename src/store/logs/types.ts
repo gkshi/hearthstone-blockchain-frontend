@@ -1,4 +1,4 @@
-import { Player } from '../../types/game'
+import { Player } from '../game/players/types'
 
 export interface Log {
   author?: Player,

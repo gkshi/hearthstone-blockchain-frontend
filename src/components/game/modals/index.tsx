@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStore } from 'effector-react'
-import { $game } from '../../../store/game/store'
+import { $game } from '../../../store/game/core/store'
 
 import TurnModal from './turn'
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { hideDices } from '../../../store/game/events'
+import { hideDices } from '../../../store/game/core/events'
 import { useStore } from 'effector-react'
-import $game from '../../../store/game/store'
+import $game from '../../../store/game/core/store'
 import { nextTick } from '../../../helpers/next-tick'
 
 import { CSSTransition } from 'react-transition-group'
@@ -77,7 +77,7 @@ function GameDiceComponent () {
 
       platform.style.transform = 'translate3d(-180px,0, 0px)'
       platform2.style.transform = 'translate3d(180px,0, 0px)'
-    }, 800)
+    }, 700)
   }
 
   useEffect(() => {
@@ -91,7 +91,7 @@ function GameDiceComponent () {
       })
       setTimeout(() => {
         hide()
-      }, 2000)
+      }, 2200)
     }
   }, [show])
 

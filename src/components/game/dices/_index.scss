@@ -70,11 +70,11 @@
   }
   .platform.playing > .dice {
     &:first-child {
-      animation: spin 2s infinite linear;
+      animation: spin 1.8s infinite linear;
     }
 
     &:last-child {
-      animation: spin2 2s infinite linear;
+      animation: spin2 1.8s infinite linear;
     }
   }
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import {
   startGame as _startGame,
-  resetGame as _resetGame,
   showGameModal
-} from '../../../store/game/events'
+} from '../../../store/game/core/events'
+import { setActivePlayer as _setActivePlayer } from '../../../store/game/players/events'
 
 import UIButton from '../../ui/button'
 
@@ -12,10 +12,14 @@ import './_index.scss'
 function GameMenuComponent () {
   const setTurnToPlayer = (e) => {
     e.preventDefault()
-    console.log('@ open game modal "turn"')
     showGameModal({
       type: 'turn'
     })
+  }
+
+  const setActivePlayer = (e) => {
+    e.preventDefault()
+    _setActivePlayer(4)
   }
 
   const startGame = (e) => {
@@ -44,17 +48,12 @@ function GameMenuComponent () {
     })
   }
 
-  const resetGame = (e) => {
-    e.preventDefault()
-    _resetGame()
-  }
-
   return (
     <div className="component -game-menu">
       <div className="system-menu">
-        <a href="#" onClick={(e) => setTurnToPlayer(e)}>set turn to player</a>
         <a href="#" onClick={(e) => startGame(e)}>start game</a>
-        <a href="#" onClick={(e) => resetGame(e)}>reset game</a>
+        <a href="#" onClick={(e) => setActivePlayer(e)}>set active player</a>
+        <a href="#" onClick={(e) => setTurnToPlayer(e)}>set turn to player</a>
       </div>
 
       <UIButton theme="dark">Help</UIButton>

@@ -54,6 +54,10 @@
 
   &.-color {
     &-red {
+      &.-active {
+        background: $color-chip-red-dark;
+      }
+
       .color {
         background: $color-chip-red;
         color: $color-chip-red-dark;
@@ -61,6 +65,10 @@
     }
 
     &-yellow {
+      &.-active {
+        background: $color-chip-yellow-dark;
+      }
+
       .color {
         background: $color-chip-yellow;
         color: $color-chip-yellow-dark;
@@ -68,6 +76,10 @@
     }
 
     &-green {
+      &.-active {
+        background: $color-chip-green-dark;
+      }
+
       .color {
         background: $color-chip-green;
         color: $color-chip-green-dark;
@@ -75,6 +87,10 @@
     }
 
     &-blue {
+      &.-active {
+        background: $color-chip-blue-dark;
+      }
+
       .color {
         background: $color-chip-blue;
         color: $color-chip-blue-dark;
@@ -82,9 +98,30 @@
     }
 
     &-violet {
+      &.-active {
+        background: $color-chip-violet-dark;
+      }
+
       .color {
         background: $color-chip-violet;
         color: $color-chip-violet-dark;
+      }
+    }
+  }
+
+  &.-active {
+    .color {
+      &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: 42px;
+        height: 42px;
+        border: 4px solid $color-content-bg;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
       }
     }
   }

@@ -1,13 +1,13 @@
 import React from 'react'
 import { useStore } from 'effector-react'
-import $game from '../../../store/game/store'
+import $gamePlayers from '../../../store/game/players/store'
 
 import GamePlayer from '../player'
 
 import './_index.scss'
 
 function GamePlayersComponent () {
-  const players = useStore($game).players
+  const players = useStore($gamePlayers).players
 
   const playerList = () => {
     return players.map(player => <GamePlayer data={player} key={player._id} />)

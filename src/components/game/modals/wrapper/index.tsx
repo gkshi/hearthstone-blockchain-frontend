@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group'
 
 import './_index.scss'
 import { useStore } from 'effector-react'
-import { $game } from '../../../../store/game/store'
+import { $game } from '../../../../store/game/core/store'
 
 interface ModalWrapperProps extends React.ComponentProps<any> {
   id: string

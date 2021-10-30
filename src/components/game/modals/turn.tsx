@@ -1,6 +1,6 @@
 import React from 'react'
-import { hideGameModal, rollTheDice } from '../../../store/game/events'
-import { DiceProps } from '../../../store/game/types'
+import { hideGameModal, rollTheDice } from '../../../store/game/core/events'
+import { DiceProps } from '../../../store/game/core/types'
 
 import GameModalWrapper from './wrapper'
 import UIButton from '../../ui/button'

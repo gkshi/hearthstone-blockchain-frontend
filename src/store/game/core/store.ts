@@ -7,13 +7,13 @@ import {
   rollTheDice,
   hideDices
 } from './events'
-import { setLog } from '../logs/events'
+import { setLog } from '../../logs/events'
 import { Modal, State } from './types'
 import {
   generateChipSet,
-  generatePlayerSet,
   getGameConfig
-} from '../../helpers/game'
+} from '../../../helpers/game'
+import { setActivePlayer, setPlayerSet } from '../players/events'
 
 const initialState = (): State => ({
   chips: [],
@@ -35,11 +35,20 @@ const initialState = (): State => ({
 export const $game = createStore<State>(initialState())
   .on(startGame, (state, data) => {
     setLog('Game started.')
-    const chips = generateChipSet(5)
+
+    // general
     const gameConfig = getGameConfig(data.rules)
+    // chips
+    const chips = generateChipSet(5)
+    // players
     const initialBalance = gameConfig.initialBalance
-    const players = generatePlayerSet(data.clients, initialBalance)
-    return { ...state, chips, players }
+    setPlayerSet({
+      clients: data.clients,
+      initialBalance
+    })
+    setActivePlayer(data.clients[0]._id)
+
+    return { ...state, chips }
   })
   .on(resetGame, (state) => {
     setLog('Игра сброшена.')
