@@ -34,6 +34,8 @@ export class Modal {
   }
 }
 
+export type DiceProps = [number, number] | []
+
 export interface State {
   players: Player[],
   chips: Chip[],
@@ -42,6 +44,11 @@ export interface State {
   currentPlayer: Player | null,
   activePlayer: Player | null,
   modal: Modal,
+
+  dices: {
+    show: boolean,
+    values: DiceProps
+  },
 
   turn: number
 }
