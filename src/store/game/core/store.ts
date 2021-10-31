@@ -70,7 +70,7 @@ export const $game = createStore<State>(initialState())
   })
 
   .on(rollTheDice, (state, values) => {
-    setLog('Брошены кости.')
+    setLog(`Брошены кости (${values.toString()}).`)
     return {
       ...state,
       dices: { show: true, values }

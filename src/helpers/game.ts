@@ -56,3 +56,35 @@ export const generatePlayerSet = (clients, initialBalance) => {
 export const getField = (fieldId) => {
   return $game.getState().fields.find(i => i.id === fieldId)
 }
+
+export const getFieldNumber = (fieldId) => {
+  const fields = $game.getState().fields
+  let number = 0
+
+  fields.every((field, i) => {
+    if (field.id === fieldId) {
+      number = i + 1
+      return false
+    }
+    return true
+  })
+
+  return number % fields.length
+}
+
+export const getFieldByNumber = (number) => {
+  const fields = $game.getState().fields
+  number = number % fields.length
+
+  return fields[number - 1]
+}
+
+export const getFieldBySteps = (from, values, direction = 'default') => {
+  const steps = values[0] + values[1]
+  const numberOfFieldFrom = getFieldNumber(from)
+  const numberOfFieldTo = direction === 'default'
+    ? numberOfFieldFrom + steps
+    : numberOfFieldFrom - steps
+
+  return getFieldByNumber(numberOfFieldTo)
+}

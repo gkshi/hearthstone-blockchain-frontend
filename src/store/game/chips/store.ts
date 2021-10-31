@@ -30,7 +30,6 @@ export const $gameChips = createStore<State>(initialState())
     setLog('Chip positions detected.')
     let chips = state.chips
     chips = chips.map((chip, i) => {
-      console.log('#chip field', chip.field)
       const fieldEl = document.querySelector(`[data-field="${chip.field}"]`)
       const elRect = fieldEl.getBoundingClientRect()
       chip.coordinates = calculateChipCoordinates(elRect, chips.length, i)
@@ -41,9 +40,7 @@ export const $gameChips = createStore<State>(initialState())
 
   .on(moveChip, (state, data) => {
     setLog('Chip moved.')
-    console.log('data', data)
     const chips = state.chips.map(chip => {
-      console.log('chip', chip)
       if (chip._id === data.chip) {
         chip.field = data.field
       }
