@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { hideDices } from '../../../store/game/core/events'
 import { useStore } from 'effector-react'
-import $game from '../../../store/game/core/store'
 import { nextTick } from '../../../helpers/next-tick'
+import { hideDices } from '../../../store/game/core/events'
+import { detectChipPositions, moveChip } from '../../../store/game/chips/events'
+import $game from '../../../store/game/core/store'
+import $gameChips from '../../../store/game/chips/store'
 
 import { CSSTransition } from 'react-transition-group'
 
 import './_index.scss'
+import { getField } from '../../../helpers/game'
 
 function GameDiceComponent () {
   const storedDices = useStore($game).dices
   const [show, setShow] = useState(false)
+  const activeChip = useStore($gameChips).activeChip
 
   const hide = () => {
     setShow(false)
@@ -77,6 +81,14 @@ function GameDiceComponent () {
 
       platform.style.transform = 'translate3d(-180px,0, 0px)'
       platform2.style.transform = 'translate3d(180px,0, 0px)'
+
+      const values = storedDices.values
+      console.log('values', values)
+      moveChip({
+        chip: activeChip._id,
+        field: getField('company_1').id
+      })
+      detectChipPositions()
     }, 600)
   }
 

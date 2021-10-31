@@ -5,3 +5,4 @@ $transition-default: all $transition-default-time $transition-default-function;
 $transition-modal: all .2s $transition-default-function;
 $transition-button: background .2s $transition-default-function, color .2s $transition-default-function;
 $transition-field: all $transition-default-time $transition-default-function;
+$transition-chip: top .8s ease, left .8s ease;

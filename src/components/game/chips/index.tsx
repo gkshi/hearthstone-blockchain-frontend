@@ -14,7 +14,7 @@ function GameChipsComponent () {
   }
 
   return (
-    <div className="component -game-chips">
+    <div className="component -game-chips" data-chips>
       {chips()}
     </div>
   )

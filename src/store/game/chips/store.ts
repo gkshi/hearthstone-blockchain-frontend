@@ -1,7 +1,7 @@
 import { createStore } from 'effector'
-import { generateChipSet } from '../../../helpers/game'
+import { calculateChipCoordinates, generateChipSet } from '../../../helpers/game'
 import { setLog } from '../../logs/events'
-import { setChipSet } from './events'
+import { detectChipPositions, moveChip, setActiveChip, setChipSet } from './events'
 import { State } from './types'
 import $game from '../core/store'
 
@@ -17,6 +17,37 @@ export const $gameChips = createStore<State>(initialState())
     let chips = generateChipSet(length)
     chips = chips.map(chip => {
       return { ...chip, field: field.id }
+    })
+    return { ...state, chips }
+  })
+
+  .on(setActiveChip, (state, color) => {
+    const activeChip = state.chips.find(i => i.color === color)
+    return { ...state, activeChip }
+  })
+
+  .on(detectChipPositions, state => {
+    setLog('Chip positions detected.')
+    let chips = state.chips
+    chips = chips.map((chip, i) => {
+      console.log('#chip field', chip.field)
+      const fieldEl = document.querySelector(`[data-field="${chip.field}"]`)
+      const elRect = fieldEl.getBoundingClientRect()
+      chip.coordinates = calculateChipCoordinates(elRect, chips.length, i)
+      return chip
+    })
+    return { ...state, chips }
+  })
+
+  .on(moveChip, (state, data) => {
+    setLog('Chip moved.')
+    console.log('data', data)
+    const chips = state.chips.map(chip => {
+      console.log('chip', chip)
+      if (chip._id === data.chip) {
+        chip.field = data.field
+      }
+      return chip
     })
     return { ...state, chips }
   })

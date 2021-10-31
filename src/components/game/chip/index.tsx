@@ -1,17 +1,18 @@
 import React from 'react'
+import { Chip } from '../../../store/game/chips/types'
 
 import './_index.scss'
 
 interface GameChipComponentProps {
-  data: {
-    color: string
-  }
+  data: Chip
 }
 
 function GameChipComponent ({ data }: GameChipComponentProps) {
+  const style = () => data.coordinates
+
   return (
-    <div className={`component -game-chip -color-${data.color}`}>
-      <div className="chip"></div>
+    <div className={`component -game-chip -color-${data.color}`} style={style()}>
+      <div className="chip" />
     </div>
   )
 }

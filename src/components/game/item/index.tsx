@@ -23,7 +23,7 @@ function GameItemWrapper ({ row, data }: GameItemProps) {
   }
 
   return (
-    <div className={className()}>
+    <div className={className()} data-field={data.id}>
       {data.type === 'company' ? <CompanyItem data={data as Company} row={row}/> : null}
       {data.type === 'start' ? <StartItem /> : null}
       {data.type === 'chest' ? <CommunityChestItem /> : null}

@@ -2,7 +2,8 @@ import { chipColors } from '../config/chips'
 import { gameConfig } from '../config/game'
 import { Player } from '../store/game/players/types'
 import { Chip } from '../store/game/chips/types'
-import { getAllItems, systemItems } from '../config/items'
+import { getAllItems } from '../config/items'
+import $game from '../store/game/core/store'
 
 export const getGameConfig = (rules) => {
   return gameConfig[rules]
@@ -13,7 +14,7 @@ export const generateChipSet = length => {
 
   for (let i = 0; i < length; i++) {
     set.push(new Chip({
-      _id: i,
+      _id: i + 1,
       color: chipColors[i]
     }))
   }
@@ -23,6 +24,19 @@ export const generateChipSet = length => {
 
 export const generateFieldSet = () => {
   return getAllItems()
+}
+
+export const calculateChipCoordinates = (elRect, chipsAmount, chipNumber) => {
+  const chipsEl = document.querySelector('[data-chips]')
+  const parentRect = chipsEl.getBoundingClientRect()
+
+  const top = (elRect.top + elRect.height / 2) - parentRect.top
+  const left = (elRect.left + elRect.width / 2) - parentRect.left
+
+  return {
+    top: `${top}px`,
+    left: `${left}px`
+  }
 }
 
 export const generatePlayerSet = (clients, initialBalance) => {
@@ -37,4 +51,8 @@ export const generatePlayerSet = (clients, initialBalance) => {
   //   photo: client.photo,
   //   balance: initialBalance || 0
   // }))
+}
+
+export const getField = (fieldId) => {
+  return $game.getState().fields.find(i => i.id === fieldId)
 }

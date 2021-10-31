@@ -12,7 +12,7 @@ import { setLog } from '../../logs/events'
 import { Modal, State } from './types'
 import { generateFieldSet, getGameConfig } from '../../../helpers/game'
 import { setActivePlayer, setPlayerSet } from '../players/events'
-import { setChipSet } from '../chips/events'
+import { detectChipPositions, setChipSet } from '../chips/events'
 
 const initialState = (): State => ({
   fields: [],
@@ -34,7 +34,6 @@ export const $game = createStore<State>(initialState())
   .on(initGame, (state, data) => {
     setLog('Game inited.')
     const fields = generateFieldSet()
-    console.log('#fields', fields)
     return { ...state, fields }
   })
 
@@ -43,6 +42,7 @@ export const $game = createStore<State>(initialState())
     // config
     const gameConfig = getGameConfig(data.rules)
     setChipSet(data.clients.length)
+    detectChipPositions()
 
     // players
     const initialBalance = gameConfig.initialBalance

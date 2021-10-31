@@ -1,6 +1,7 @@
 import { createStore } from 'effector'
 import { generatePlayerSet } from '../../../helpers/game'
 import { setActivePlayer, setPlayerSet } from './events'
+import { setActiveChip } from '../chips/events'
 import { setLog } from '../../logs/events'
 import { State } from './types'
 
@@ -19,6 +20,7 @@ export const $gamePlayers = createStore<State>(initialState())
   .on(setActivePlayer, (state, id) => {
     setLog('Active player set.')
     const activePlayer = state.players.find(i => i._id === id)
+    setActiveChip(activePlayer.color)
     return { ...state, activePlayer }
   })
 

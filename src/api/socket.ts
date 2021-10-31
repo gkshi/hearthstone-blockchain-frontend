@@ -22,7 +22,6 @@ const addSocketListeners = socket => {
 
 export const connect = () => {
   const storedSocket = $socket.getState().socket
-  console.log('storedSocket', storedSocket)
   if (storedSocket && storedSocket.connected) {
     return
   }
