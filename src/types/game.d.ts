@@ -13,12 +13,21 @@ export interface Item {
 
 export interface ItemData {
   id?: Item.id,
-  type?: Item.type
+  type?: Item.type,
+  name?: string,
+  category?: string
 }
 
 export interface Company extends Item {
   alias: string,
   name: string,
   color: ItemColor,
-  price?: Price
+  price?: Price,
+  category: ID
+}
+
+export interface ItemCategory {
+  id: ID,
+  alias: string,
+  name: string
 }

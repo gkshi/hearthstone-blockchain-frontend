@@ -1,4 +1,57 @@
-import { Item, Company } from '../types/game'
+import { Item, Company, ItemCategory } from '../types/game'
+
+export const categories = [
+  {
+    id: 1,
+    alias: 'perfumery',
+    name: 'Парфюмерия'
+  },
+  {
+    id: 2,
+    alias: 'auto',
+    name: 'Автомобили'
+  },
+  {
+    id: 3,
+    alias: 'clothes',
+    name: 'Одежда'
+  },
+  {
+    id: 4,
+    alias: 'social',
+    name: 'Социальные сети'
+  },
+  {
+    id: 5,
+    alias: 'developers',
+    name: 'Разработчики игр'
+  },
+  {
+    id: 6,
+    alias: 'drinks',
+    name: 'Напитки'
+  },
+  {
+    id: 7,
+    alias: 'airlines',
+    name: 'Авиакомпании'
+  },
+  {
+    id: 8,
+    alias: 'food',
+    name: 'Еда'
+  },
+  {
+    id: 9,
+    alias: 'video_streaming',
+    name: 'Видеостриминговые сервисы'
+  },
+  {
+    id: 10,
+    alias: 'digital',
+    name: 'Цифровая техника'
+  }
+] as ItemCategory[]
 
 export const items = {
   top: [
@@ -7,6 +60,7 @@ export const items = {
       alias: 'chanel',
       name: 'Chanel',
       type: 'company',
+      category: 'perfumery',
       color: 'pink',
       price: 60000
     },
@@ -19,6 +73,7 @@ export const items = {
       alias: 'boss',
       name: 'Hugo Boss',
       type: 'company',
+      category: 'perfumery',
       color: 'pink',
       price: 60000
     },
@@ -31,6 +86,7 @@ export const items = {
       alias: 'mercedes',
       name: 'Mercedes Benz',
       type: 'company',
+      category: 'auto',
       color: 'red',
       price: 200000
     },
@@ -39,6 +95,7 @@ export const items = {
       alias: 'adidas',
       name: 'Adidas',
       type: 'company',
+      category: 'clothes',
       color: 'orange',
       price: 100000
     },
@@ -51,6 +108,7 @@ export const items = {
       alias: 'puma',
       name: 'Puma',
       type: 'company',
+      category: 'clothes',
       color: 'orange',
       price: 100000
     },
@@ -59,6 +117,7 @@ export const items = {
       alias: 'nike',
       name: 'Nike',
       type: 'company',
+      category: 'clothes',
       color: 'orange',
       price: 120000
     }
@@ -70,6 +129,7 @@ export const items = {
       alias: 'vk',
       name: 'VK',
       type: 'company',
+      category: 'social',
       color: 'blue-green',
       price: 140000
     },
@@ -78,6 +138,7 @@ export const items = {
       alias: 'epicgames',
       name: 'Epic Games',
       type: 'company',
+      category: 'developers',
       color: 'vinous',
       price: 150000
     },
@@ -86,6 +147,7 @@ export const items = {
       alias: 'facebook',
       name: 'Facebook',
       type: 'company',
+      category: 'social',
       color: 'blue-green',
       price: 140000
     },
@@ -94,6 +156,7 @@ export const items = {
       alias: 'telegram',
       name: 'Telegram',
       type: 'company',
+      category: 'social',
       color: 'blue-green',
       price: 160000
     },
@@ -102,6 +165,7 @@ export const items = {
       alias: 'audi',
       name: 'Audi',
       type: 'company',
+      category: 'auto',
       color: 'red',
       price: 200000
     },
@@ -110,6 +174,7 @@ export const items = {
       alias: 'cocacola',
       name: 'Coca-Cola',
       type: 'company',
+      category: 'drinks',
       color: 'blue',
       price: 180000
     },
@@ -122,6 +187,7 @@ export const items = {
       alias: 'pepsi',
       name: 'Pepsi',
       type: 'company',
+      category: 'drinks',
       color: 'blue',
       price: 180000
     },
@@ -130,6 +196,7 @@ export const items = {
       alias: 'fanta',
       name: 'Fanta',
       type: 'company',
+      category: 'drinks',
       color: 'blue',
       price: 180000
     }
@@ -141,6 +208,7 @@ export const items = {
       alias: 'aeroflot',
       name: 'Aeroflot',
       type: 'company',
+      category: 'airlines',
       color: 'green',
       price: 220000
     },
@@ -153,6 +221,7 @@ export const items = {
       alias: 'smartavia',
       name: 'Smart Avia',
       type: 'company',
+      category: 'airlines',
       color: 'green',
       price: 220000
     },
@@ -169,6 +238,7 @@ export const items = {
       alias: 'mitsubishi',
       name: 'Mitsubishi',
       type: 'company',
+      category: 'auto',
       color: 'red',
       price: 200000
     },
@@ -177,6 +247,7 @@ export const items = {
       alias: 'mcdonalds',
       name: 'McDonald’s',
       type: 'company',
+      category: 'food',
       color: 'light-blue',
       price: 260000
     },
@@ -185,6 +256,7 @@ export const items = {
       alias: 'burgerking',
       name: 'Burger King',
       type: 'company',
+      category: 'food',
       color: 'light-blue',
       price: 260000
     },
@@ -193,6 +265,7 @@ export const items = {
       alias: 'ea',
       name: 'EA Sports',
       type: 'company',
+      category: 'developers',
       color: 'vinous',
       price: 150000
     },
@@ -201,6 +274,7 @@ export const items = {
       alias: 'kfc',
       name: 'Kentucky Fried Chicken',
       type: 'company',
+      category: 'food',
       color: 'light-blue',
       price: 280000
     }
@@ -212,14 +286,16 @@ export const items = {
       alias: 'youtube',
       name: 'YouTube',
       type: 'company',
+      category: 'video_streaming',
       color: 'violet',
       price: 300000
     },
     {
       id: 'company_24',
-      alias: 'amazon',
-      name: 'Amazon',
+      alias: 'netflix',
+      name: 'Netflix',
       type: 'company',
+      category: 'video_streaming',
       color: 'violet',
       price: 300000
     },
@@ -229,9 +305,10 @@ export const items = {
     },
     {
       id: 'company_25',
-      alias: 'microsoft',
-      name: 'Microsoft',
+      alias: 'twitch',
+      name: 'Twitch',
       type: 'company',
+      category: 'video_streaming',
       color: 'violet',
       price: 320000
     },
@@ -240,6 +317,7 @@ export const items = {
       alias: 'bmw',
       name: 'BMW',
       type: 'company',
+      category: 'auto',
       color: 'red',
       price: 200000
     },
@@ -252,6 +330,7 @@ export const items = {
       alias: 'apple',
       name: 'Apple',
       type: 'company',
+      category: 'digital',
       color: 'gray',
       price: 350000
     },
@@ -264,6 +343,7 @@ export const items = {
       alias: 'mi',
       name: 'Xiaomi',
       type: 'company',
+      category: 'digital',
       color: 'gray',
       price: 400000
     }

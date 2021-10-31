@@ -29,7 +29,12 @@ function GameItemWrapper ({ row, data }: GameItemProps) {
   }
 
   const tooltip = () => {
-    return <div>tooltip</div>
+    return <div className="tooltip">
+      <div>
+        <div>{data.name}</div>
+        <div>{data.category}</div>
+      </div>
+    </div>
   }
 
   const tooltipPlacement = () => {
