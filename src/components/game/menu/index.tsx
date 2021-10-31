@@ -34,12 +34,12 @@ function GameMenuComponent () {
         {
           _id: 2,
           name: 'player2'
-        },
-        {
-          _id: 3,
-          name: 'player3',
-          photo: 'https://avatars.githubusercontent.com/u/499550?v=4'
         }
+        // {
+        //   _id: 3,
+        //   name: 'player3',
+        //   photo: 'https://avatars.githubusercontent.com/u/499550?v=4'
+        // },
         // {
         //   _id: 4,
         //   name: 'player4'

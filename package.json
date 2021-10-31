@@ -12,6 +12,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@tippyjs/react": "^4.2.6",
     "axios": "^0.21.4",
     "effector": "^22.1.2",
     "effector-react": "^22.0.4",
@@ -23,7 +24,6 @@
     "router5": "^8.0.1",
     "router5-plugin-browser": "^8.0.1",
     "socket.io-client": "^4.3.2",
-    "tippy.js": "^6.3.2",
     "web-vitals": "^2.1.2"
   },
   "devDependencies": {
