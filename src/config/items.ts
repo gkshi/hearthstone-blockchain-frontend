@@ -1,4 +1,4 @@
-import { Item, Company, ItemCategory } from '../types/game'
+import { Field, Company, FieldCategory } from '../store/game/core/types'
 
 export const categories = [
   {
@@ -51,7 +51,7 @@ export const categories = [
     alias: 'digital',
     name: 'Цифровая техника'
   }
-] as ItemCategory[]
+] as FieldCategory[]
 
 export const items = {
   top: [
@@ -230,6 +230,7 @@ export const items = {
       alias: 's7',
       name: 'S7 Airlines',
       type: 'company',
+      category: 'airlines',
       color: 'green',
       price: 240000
     },
@@ -272,7 +273,7 @@ export const items = {
     {
       id: 'company_22',
       alias: 'kfc',
-      name: 'Kentucky Fried Chicken',
+      name: 'KFC',
       type: 'company',
       category: 'food',
       color: 'light-blue',
@@ -349,10 +350,10 @@ export const items = {
     }
   ]
 } as {
-  top: Item[] | Company[],
-  right: Item[] | Company[],
-  bottom: Item[] | Company[],
-  left: Item[] | Company[]
+  top: Field[] | Company[],
+  right: Field[] | Company[],
+  bottom: Field[] | Company[],
+  left: Field[] | Company[]
 }
 
 export const systemItems = [
@@ -390,7 +391,7 @@ export function getAllItems () {
     ...items.left]
 }
 
-export function getItems (query: string | object): Item[] {
+export function getItems (query: string | object): Field[] {
   if (typeof query === 'string') {
     query = { id: query }
   }

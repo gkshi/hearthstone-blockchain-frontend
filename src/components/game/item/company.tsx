@@ -1,6 +1,6 @@
 import React from 'react'
-import { Company } from '../../../types/game'
 import { shortCurrencyValue } from '../../../helpers/currency'
+import { Company } from '../../../store/game/core/types'
 
 import './_index.scss'
 

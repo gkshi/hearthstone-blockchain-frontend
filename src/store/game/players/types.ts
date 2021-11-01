@@ -1,4 +1,6 @@
-import { ID, PlayerColor, Price } from '../../../types/game'
+import { ID, Price } from '../core/types'
+
+export type PlayerColor = 'red' | 'yellow' | 'green' | 'blue' | 'violet'
 
 export interface Client {
   _id: ID,

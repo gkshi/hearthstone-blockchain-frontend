@@ -1,5 +1,106 @@
 @import "../../../assets/scss/variables";
 
+.tippy-box[data-theme="field"] {
+  border-radius: $border-radius-small;
+
+  .tippy-content {
+    padding: 0;
+  }
+
+  .field-tooltip {
+    width: 220px;
+    font-size: 12px;
+    line-height: 14px;
+
+    header {
+      padding: 12px 20px;
+      margin-bottom: 6px;
+      color: $color-text-white;
+      border-radius: $border-radius-small $border-radius-small 0 0;
+
+      .name {
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: $font-weight-semibold;
+      }
+
+      .category {
+        margin-top: 4px;
+        font-size: 11px;
+        line-height: 13px;
+      }
+    }
+
+    section {
+      padding: 10px 20px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .icon.-star {
+      margin-right: 3px;
+    }
+
+    &.-color {
+      &-pink {
+        header {
+          background: $color-item-pink;
+        }
+      }
+      &-red {
+        header {
+          background: $color-item-red;
+        }
+      }
+      &-orange {
+        header {
+          background: $color-item-orange;
+        }
+      }
+      &-blue-green {
+        header {
+          background: $color-item-blue-green;
+        }
+      }
+      &-vinous {
+        header {
+          background: $color-item-vinous;
+        }
+      }
+      &-blue {
+        header {
+          background: $color-item-blue;
+        }
+      }
+      &-green {
+        header {
+          background: $color-item-green;
+        }
+      }
+      &-light-blue {
+        header {
+          background: $color-item-light-blue;
+        }
+      }
+      &-violet {
+        header {
+          background: $color-item-violet;
+        }
+      }
+      &-gray {
+        header {
+          background: $color-item-gray;
+        }
+      }
+    }
+  }
+}
+
 .component.-table-item {
   position: relative;
   margin: 1px;

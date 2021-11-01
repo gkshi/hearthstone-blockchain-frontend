@@ -1,5 +1,5 @@
 import { GamePlayersDomain } from './domain'
-import { ID } from '../../../types/game'
+import { ID } from '../core/types'
 import { PlayerSet } from './types'
 
 export const setActivePlayer = GamePlayersDomain.createEvent<ID>('set active player')

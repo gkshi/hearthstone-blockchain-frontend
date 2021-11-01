@@ -1,6 +1,6 @@
 import { GameChipsDomain } from './domain'
 import { MoveChipProps } from './types'
-import { PlayerColor } from '../../../types/game'
+import { PlayerColor } from '../players/types'
 
 export const setChipSet = GameChipsDomain.createEvent<number>('set chip set')
 

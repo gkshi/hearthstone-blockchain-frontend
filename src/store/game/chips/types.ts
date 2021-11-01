@@ -1,4 +1,5 @@
-import { ID, PlayerColor } from '../../../types/game'
+import { ID } from '../core/types'
+import { PlayerColor } from '../players/types'
 
 export interface MoveChipProps {
   chip: ID,

@@ -4,6 +4,7 @@ import { Player } from '../store/game/players/types'
 import { Chip } from '../store/game/chips/types'
 import { getAllItems } from '../config/items'
 import $game from '../store/game/core/store'
+import { Field } from '../store/game/core/types'
 
 export const getGameConfig = (rules) => {
   return gameConfig[rules]
@@ -23,7 +24,8 @@ export const generateChipSet = length => {
 }
 
 export const generateFieldSet = () => {
-  return getAllItems()
+  const items = getAllItems()
+  return items.map(i => new Field(i))
 }
 
 export const calculateChipCoordinates = (elRect, chipsAmount, chipNumber) => {

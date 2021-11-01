@@ -1,0 +1,9 @@
+@import "src/assets/scss/variables";
+
+.icon.-star {
+  &.-theme {
+    &-gold {
+      color: $color-star-gold;
+    }
+  }
+}
