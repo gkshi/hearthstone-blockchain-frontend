@@ -1,6 +1,8 @@
 @import "../../../assets/scss/variables";
 
 .tippy-box[data-theme="field"] {
+  background: $color-content-bg;
+  color: $color-text-light;
   border-radius: $border-radius-small;
 
   .tippy-content {

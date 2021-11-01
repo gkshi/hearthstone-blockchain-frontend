@@ -20,19 +20,39 @@ function GameTableComponent () {
   })
 
   const topRow = () => {
-    return items.top.map(item => <TableItem row="top" data={item} key={item.id} />)
+    return items.top.map((item, i) => <TableItem
+      row="top"
+      data={item}
+      tooltipPlacement={i < 3 ? 'bottom-start' : i > 5 ? 'bottom-end' : 'bottom'}
+      key={item.id}
+    />)
   }
 
   const rightRow = () => {
-    return items.right.map(item => <TableItem row="right" data={item} key={item.id} />)
+    return items.right.map((item, i) => <TableItem
+      row="right"
+      data={item}
+      tooltipPlacement={i < 4 ? 'left-start' : i > 5 ? 'left-end' : 'left'}
+      key={item.id}
+    />)
   }
 
   const bottomRow = () => {
-    return items.bottom.map(item => <TableItem row="bottom" data={item} key={item.id} />)
+    return items.bottom.map((item, i) => <TableItem
+      row="bottom"
+      data={item}
+      tooltipPlacement={i < 2 ? 'top-end' : i > 6 ? 'top-start' : 'top'}
+      key={item.id}
+    />)
   }
 
   const leftRow = () => {
-    return items.left.map(item => <TableItem row="left" data={item} key={item.id} />)
+    return items.left.map((item, i) => <TableItem
+      row="left"
+      data={item}
+      tooltipPlacement={i < 3 ? 'right-start' : i > 5 ? 'right-end' : 'right'}
+      key={item.id}
+    />)
   }
 
   const fit = () => {

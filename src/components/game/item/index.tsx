@@ -1,5 +1,6 @@
 import React from 'react'
 import { Company, FieldData } from '../../../store/game/core/types'
+import { Placement } from 'tippy.js'
 
 import Tippy from '@tippyjs/react'
 import CompanyItem from './company'
@@ -18,10 +19,11 @@ import 'tippy.js/dist/tippy.css'
 
 interface GameItemProps extends React.ComponentProps<any> {
   row?: 'top' | 'right' | 'bottom' | 'left',
-  data?: FieldData | Company
+  data?: FieldData | Company,
+  tooltipPlacement?: Placement
 }
 
-function GameItemWrapper ({ row, data }: GameItemProps) {
+function GameItemWrapper ({ row, data, tooltipPlacement }: GameItemProps) {
   const isInteractive = () => {
     return !['start', 'jail', 'parking', 'police', 'chance', 'tax', 'chest'].includes(data.type)
   }
@@ -30,20 +32,7 @@ function GameItemWrapper ({ row, data }: GameItemProps) {
     return `component -table-item -row-${row} ${'color' in data ? '-color-' + data.color : ''} ${isInteractive() ? '-interactive' : ''}`
   }
 
-  const tooltipPlacement = () => {
-    switch (row) {
-      case 'top':
-        return 'bottom'
-      case 'right':
-        return 'left'
-      case 'bottom':
-        return 'top'
-      case 'left':
-        return 'right'
-      default:
-        return 'auto'
-    }
-  }
+  const _tooltipPlacement = () => tooltipPlacement || 'auto'
 
   const onTooltipMount = (instance) => {
     if (!isInteractive()) {
@@ -133,7 +122,7 @@ function GameItemWrapper ({ row, data }: GameItemProps) {
       appendTo={() => document.body}
       arrow={false}
       trigger='click'
-      placement={tooltipPlacement()}
+      placement={_tooltipPlacement()}
       theme="field"
       onMount={(instance) => onTooltipMount(instance)}
     >
