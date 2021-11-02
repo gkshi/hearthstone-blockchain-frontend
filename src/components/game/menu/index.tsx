@@ -1,7 +1,8 @@
 import React from 'react'
 import {
   startGame as _startGame,
-  showGameModal
+  showGameModal,
+  buyField as _buyField
 } from '../../../store/game/core/events'
 import { setActivePlayer as _setActivePlayer } from '../../../store/game/players/events'
 
@@ -20,6 +21,10 @@ function GameMenuComponent () {
   const buyField = (e) => {
     e.preventDefault()
     console.log('buyField')
+    _buyField({
+      field: 'adidas',
+      owner: 'red'
+    })
   }
 
   const startGame = (e) => {

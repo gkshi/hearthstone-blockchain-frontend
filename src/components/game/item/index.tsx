@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import $game from '../../../store/game/core/store'
+import { buyField } from '../../../store/game/core/events'
+import { useStore } from 'effector-react'
 import { Company, FieldData } from '../../../store/game/core/types'
 import { Placement } from 'tippy.js'
 
@@ -24,6 +27,8 @@ interface GameItemProps extends React.ComponentProps<any> {
 }
 
 function GameItemWrapper ({ row, data, tooltipPlacement }: GameItemProps) {
+  const storedField = useStore($game).fields.find(i => i.id === data.id)
+
   const isInteractive = () => {
     return !['start', 'jail', 'parking', 'police', 'chance', 'tax', 'chest'].includes(data.type)
   }
@@ -115,6 +120,15 @@ function GameItemWrapper ({ row, data, tooltipPlacement }: GameItemProps) {
     </div>
   }
 
+  const attributes = () => {
+    const obj = {}
+    obj['data-field'] = data.id
+    if ('owner' in storedField) {
+      obj['data-owner'] = storedField.owner
+    }
+    return obj
+  }
+
   return (
     <Tippy
       content={tooltip()}
@@ -123,10 +137,10 @@ function GameItemWrapper ({ row, data, tooltipPlacement }: GameItemProps) {
       arrow={false}
       trigger='click'
       placement={_tooltipPlacement()}
-      theme="field"
+      theme='field'
       onMount={(instance) => onTooltipMount(instance)}
     >
-      <div className={className()} data-field={data.id}>
+      <div className={className()} {...attributes()}>
         {data.type === 'company' ? <CompanyItem data={data as Company} row={row}/> : null}
         {data.type === 'start' ? <StartItem /> : null}
         {data.type === 'chest' ? <CommunityChestItem /> : null}

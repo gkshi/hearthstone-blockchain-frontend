@@ -244,4 +244,49 @@
   &.-interactive {
     cursor: pointer;
   }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &[data-owner="red"] {
+    &:before {
+      background: rgba($color-chip-red, .5);
+    }
+  }
+
+  &[data-owner="yellow"] {
+    &:before {
+      background: rgba($color-chip-yellow, .5);
+    }
+  }
+
+  &[data-owner="green"] {
+    &:before {
+      background: rgba($color-chip-green, .5);
+    }
+  }
+
+  &[data-owner="blue"] {
+    &:before {
+      background: rgba($color-chip-blue, .5);
+    }
+  }
+
+  &[data-owner="violet"] {
+    &:before {
+      background: rgba($color-chip-violet, .5);
+    }
+  }
 }

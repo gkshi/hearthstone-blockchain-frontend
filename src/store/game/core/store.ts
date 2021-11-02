@@ -9,7 +9,7 @@ import {
   hideDices, buyField
 } from './events'
 import { setLog } from '../../logs/events'
-import { Modal, State } from './types'
+import { Company, Modal, State } from './types'
 import { generateFieldSet, getGameConfig } from '../../../helpers/game'
 import { setActivePlayer, setPlayerSet } from '../players/events'
 import { detectChipPositions, setChipSet } from '../chips/events'
@@ -27,14 +27,15 @@ const initialState = (): State => ({
     values: []
   },
 
-  turn: 0
+  turn: 0,
+  isInited: false
 })
 
 export const $game = createStore<State>(initialState())
   .on(initGame, (state, data) => {
     setLog('Game inited.')
     const fields = generateFieldSet()
-    return { ...state, fields }
+    return { ...state, fields, isInited: true }
   })
 
   .on(startGame, (state, data) => {
@@ -84,8 +85,15 @@ export const $game = createStore<State>(initialState())
     }
   })
 
-  .on(buyField, state => {
-    return state
+  .on(buyField, (state, data) => {
+    setLog(`Field ${data.field} was bought by ${data.owner} player.`)
+    const fields = state.fields.map((field: Company) => {
+      if (field.alias === data.field) {
+        field.owner = data.owner
+      }
+      return field
+    })
+    return { ...state, fields }
   })
 
 export default $game

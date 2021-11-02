@@ -9,8 +9,12 @@ import GameModals from '../modals'
 import GameLogs from '../logs'
 
 import './_index.scss'
+import { useStore } from 'effector-react'
+import $game from '../../../store/game/core/store'
 
 function GameTableComponent () {
+  const isGameInited = useStore($game).isInited
+
   const [tableWidth, setTableWidth] = useState(0)
   const [tableHeight, setTableHeight] = useState(0)
 
@@ -80,6 +84,10 @@ function GameTableComponent () {
       window.removeEventListener('resize', fit)
     }
   }, [])
+
+  if (!isGameInited) {
+    return null
+  }
 
   return (
     <div className="component -game-table" style={tableStyle()}>

@@ -1,4 +1,4 @@
-import { Player } from '../players/types'
+import { Player, PlayerColor } from '../players/types'
 
 // global
 export type ID = number | string
@@ -46,8 +46,9 @@ export class FieldCategory {
 
 export interface FieldData {
   id?: ID,
-  type?: FieldType,
+  alias?: string,
   name?: string,
+  type?: FieldType,
   category?: string,
   color?: FieldColor
 }
@@ -57,15 +58,18 @@ export interface Company extends Field {
   name: string,
   color: FieldColor,
   price?: Price,
-  category: FieldCategory
+  category: FieldCategory,
+  owner?: PlayerColor | null
 }
 
 // eslint-disable-next-line no-redeclare
 export class Company extends Field {
   constructor (props) {
     super(props)
+    this.alias = props.alias
     this.name = props.name
     this.category = new FieldCategory(props.category)
+    this.owner = props.owner || null
   }
 }
 
@@ -91,6 +95,12 @@ export class Modal {
 // dices
 export type DiceProps = [number, number] | []
 
+// buying
+export interface FieldBuyingProps {
+  field: ID,
+  owner: PlayerColor
+}
+
 // game state
 export interface State {
   players: Player[],
@@ -105,5 +115,6 @@ export interface State {
     values: DiceProps
   },
 
+  isInited: boolean,
   turn: number
 }

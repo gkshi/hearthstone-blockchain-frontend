@@ -4,7 +4,7 @@ import { Player } from '../store/game/players/types'
 import { Chip } from '../store/game/chips/types'
 import { items, getAllItems } from '../config/items'
 import $game from '../store/game/core/store'
-import { Field } from '../store/game/core/types'
+import { Company, Field } from '../store/game/core/types'
 import $gameChips from '../store/game/chips/store'
 
 export const getGameConfig = (rules) => {
@@ -26,7 +26,11 @@ export const generateChipSet = length => {
 
 export const generateFieldSet = () => {
   const items = getAllItems()
-  return items.map(i => new Field(i))
+  return items.map(item => {
+    return item.type === 'company'
+      ? new Company(item)
+      : new Field(item)
+  })
 }
 
 export const getFieldRow = (fieldId) => {
@@ -147,7 +151,6 @@ const fitChipCoordinates = ({ middleCoordinates, chipsAmountOnField, chipNumber,
 export const calculateChipCoordinates = (chipId) => {
   const state = $gameChips.getState()
   const chip = state.chips.find(i => i._id === chipId)
-  console.log('chip.field', chip.field)
   const fieldEl = document.querySelector(`[data-field="${chip.field}"]`)
   const fieldRect = fieldEl.getBoundingClientRect()
   const row = getFieldRow(chip.field)

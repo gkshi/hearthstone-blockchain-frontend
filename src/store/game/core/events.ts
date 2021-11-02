@@ -1,5 +1,5 @@
 import { GameDomain } from './domain'
-import { DiceProps, GameData, ModalProps } from './types'
+import { DiceProps, GameData, ModalProps, FieldBuyingProps } from './types'
 
 export const initGame = GameDomain.createEvent<void>('init game')
 export const startGame = GameDomain.createEvent<GameData>('start game')
@@ -11,4 +11,4 @@ export const hideGameModal = GameDomain.createEvent<void>('hide game modal')
 export const rollTheDice = GameDomain.createEvent<DiceProps>('roll the dice')
 export const hideDices = GameDomain.createEvent<void>('hide dices')
 
-export const buyField = GameDomain.createEvent<void>('buy field')
+export const buyField = GameDomain.createEvent<FieldBuyingProps>('buy field')
