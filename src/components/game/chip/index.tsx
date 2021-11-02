@@ -13,6 +13,9 @@ function GameChipComponent ({ data }: GameChipComponentProps) {
   return (
     <div className={`component -game-chip -color-${data.color}`} style={style()}>
       <div className="chip" />
+      <div className="indicator">
+        <div className="point" />
+      </div>
     </div>
   )
 }

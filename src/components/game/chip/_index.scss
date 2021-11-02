@@ -3,6 +3,7 @@
 .component.-game-chip {
   position: absolute;
   z-index: 1;
+  padding: 6px;
   transform: translate(-50%, -50%);
   transition: $transition-chip;
 
@@ -13,6 +14,22 @@
     height: 22px;
     background: $color-text-regular;
     border-radius: 50%;
+  }
+
+  .indicator {
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    padding-left: 1px;
+    animation: indicator-spin 1s linear infinite;
+
+    .point {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+    }
   }
 
   &:after {
@@ -30,7 +47,7 @@
 
   &.-color {
     &-red {
-      .chip {
+      .chip, .point {
         background: $color-chip-red;
       }
       &:after {
@@ -39,7 +56,7 @@
     }
 
     &-green {
-      .chip {
+      .chip, .point {
         background: $color-chip-green;
       }
       &:after {
@@ -48,7 +65,7 @@
     }
 
     &-blue {
-      .chip {
+      .chip, .point {
         background: $color-chip-blue;
       }
       &:after {
@@ -57,7 +74,7 @@
     }
 
     &-violet {
-      .chip {
+      .chip, .point {
         background: $color-chip-violet;
       }
       &:after {
@@ -66,12 +83,21 @@
     }
 
     &-yellow {
-      .chip {
+      .chip, .point {
         background: $color-chip-yellow;
       }
       &:after {
         background: $color-chip-yellow-dark;
       }
+    }
+  }
+
+  @keyframes indicator-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 }
