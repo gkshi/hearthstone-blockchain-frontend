@@ -10,3 +10,5 @@ export const hideGameModal = GameDomain.createEvent<void>('hide game modal')
 
 export const rollTheDice = GameDomain.createEvent<DiceProps>('roll the dice')
 export const hideDices = GameDomain.createEvent<void>('hide dices')
+
+export const buyField = GameDomain.createEvent<void>('buy field')

@@ -6,7 +6,7 @@ import {
   showGameModal,
   hideGameModal,
   rollTheDice,
-  hideDices
+  hideDices, buyField
 } from './events'
 import { setLog } from '../../logs/events'
 import { Modal, State } from './types'
@@ -82,6 +82,10 @@ export const $game = createStore<State>(initialState())
       ...state,
       dices: { show: false, values: [] }
     }
+  })
+
+  .on(buyField, state => {
+    return state
   })
 
 export default $game

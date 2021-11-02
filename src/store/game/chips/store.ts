@@ -27,12 +27,11 @@ export const $gameChips = createStore<State>(initialState())
   })
 
   .on(detectChipPositions, state => {
+    console.log('#detectChipPositions')
     setLog('Chip positions detected.')
     let chips = state.chips
     chips = chips.map((chip, i) => {
-      const fieldEl = document.querySelector(`[data-field="${chip.field}"]`)
-      const elRect = fieldEl.getBoundingClientRect()
-      chip.coordinates = calculateChipCoordinates(elRect, chips.length, i)
+      chip.coordinates = calculateChipCoordinates(chip._id)
       return chip
     })
     return { ...state, chips }

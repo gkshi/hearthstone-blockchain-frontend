@@ -368,14 +368,14 @@ export const systemItems = [
     type: 'jail'
   },
   {
-    id: 'police',
-    alias: 'police',
-    type: 'police'
-  },
-  {
     id: 'parking',
     alias: 'parking',
     type: 'parking'
+  },
+  {
+    id: 'police',
+    alias: 'police',
+    type: 'police'
   }
 ]
 

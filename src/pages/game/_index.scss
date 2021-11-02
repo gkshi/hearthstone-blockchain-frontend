@@ -3,7 +3,7 @@
 .page.-game {
   width: 100%;
   height: 100%;
-  padding-right: 5%;
+  padding-right: 8%;
   color: $color-text-light;
   overflow: hidden;
 
@@ -18,6 +18,6 @@
   .game-aside {
     width: 300px;
     height: calc(100% - 40px);
-    margin-right: 8%;
+    margin-right: 5%;
   }
 }

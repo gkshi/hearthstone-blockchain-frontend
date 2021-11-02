@@ -17,9 +17,9 @@ function GameMenuComponent () {
     })
   }
 
-  const setActivePlayer = (e) => {
+  const buyField = (e) => {
     e.preventDefault()
-    _setActivePlayer(1)
+    console.log('buyField')
   }
 
   const startGame = (e) => {
@@ -34,16 +34,20 @@ function GameMenuComponent () {
         {
           _id: 2,
           name: 'player2'
+        },
+        {
+          _id: 3,
+          name: 'player3',
+          photo: 'https://avatars.githubusercontent.com/u/499550?v=4'
+        },
+        {
+          _id: 4,
+          name: 'player4'
+        },
+        {
+          _id: 5,
+          name: 'player5'
         }
-        // {
-        //   _id: 3,
-        //   name: 'player3',
-        //   photo: 'https://avatars.githubusercontent.com/u/499550?v=4'
-        // },
-        // {
-        //   _id: 4,
-        //   name: 'player4'
-        // }
       ]
     })
   }
@@ -52,8 +56,8 @@ function GameMenuComponent () {
     <div className="component -game-menu">
       <div className="system-menu">
         <a href="#" onClick={(e) => startGame(e)}>start game</a>
-        <a href="#" onClick={(e) => setActivePlayer(e)}>set active player</a>
         <a href="#" onClick={(e) => setTurnToPlayer(e)}>set turn to player</a>
+        <a href="#" onClick={(e) => buyField(e)}>buy field</a>
       </div>
 
       <UIButton theme="dark">Help</UIButton>
