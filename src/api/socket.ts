@@ -2,6 +2,7 @@ import { $socket } from '../store/socket/store'
 import { io } from 'socket.io-client'
 import { setSocket } from '../store/socket/events'
 import { showNotification } from '../store/notifications/events'
+import { $auth } from '../store/auth/store'
 
 const addSocketListeners = socket => {
   socket.on('connect', () => {
@@ -9,6 +10,13 @@ const addSocketListeners = socket => {
       type: 'success',
       heading: 'Socket connected',
       content: `ID #${socket.id}`
+    })
+  })
+
+  socket.on('room-created', data => {
+    showNotification({
+      heading: 'Room created',
+      content: data.toString()
     })
   })
 
@@ -25,8 +33,12 @@ export const connect = () => {
   if (storedSocket && storedSocket.connected) {
     return
   }
+  const user = $auth.getState().user
   const socket = io(process.env.REACT_APP_API_BASE_URL, {
     // withCredentials: true
+    auth: {
+      id: user?._id || null
+    }
   })
 
   addSocketListeners(socket)
