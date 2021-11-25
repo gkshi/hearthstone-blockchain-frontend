@@ -3,7 +3,8 @@ import { io } from 'socket.io-client'
 import { setSocket } from '../store/socket/events'
 import { showNotification } from '../store/notifications/events'
 import { $auth } from '../store/auth/store'
-import { addRoom } from '../store/rooms/events'
+import { addRoom, setRooms } from '../store/rooms/events'
+import { SyncData } from '../react-app-env'
 
 const addSocketListeners = socket => {
   socket.on('connect', () => {
@@ -12,6 +13,11 @@ const addSocketListeners = socket => {
       heading: 'Socket connected',
       content: `ID #${socket.id}`
     })
+  })
+
+  socket.on('sync', (data: SyncData) => {
+    console.log('# sync', data)
+    setRooms(data.rooms)
   })
 
   socket.on('room-created', data => {
