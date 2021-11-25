@@ -1,0 +1,13 @@
+.component.-room {
+  width: 400px;
+  padding: 10px 20px;
+  background: #ccc;
+
+  .slots {
+    & > * {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+}
