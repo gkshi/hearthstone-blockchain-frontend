@@ -16,7 +16,6 @@ const addSocketListeners = socket => {
   })
 
   socket.on('sync', (data: SyncData) => {
-    console.log('# sync', data)
     setRooms(data.rooms)
   })
 

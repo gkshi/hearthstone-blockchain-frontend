@@ -3,9 +3,13 @@
 
 #### outgoing events
 
-`create-room` - creates new game room (lobby)
+`create-room`
 
-`close-room` - closes existing room
+`close-room`
+
+`join-to-room`
+
+`exit-from-room`
 
 
 #### incoming events

@@ -9,7 +9,6 @@ function RoomCreatorComponent () {
   const socket = $socket.getState().socket
 
   const createRoom = () => {
-    console.log('createRoom')
     const data = {
       slots,
       players: [$auth.getState().user]

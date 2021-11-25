@@ -13,7 +13,7 @@ export interface PlayerSet {
 
 export interface Player {
   _id: ID,
-  name?: string,
+  name: string,
   color: PlayerColor,
   balance?: Price,
   photo?: string,

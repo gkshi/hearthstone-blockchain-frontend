@@ -16,7 +16,6 @@ export const $rooms = createStore<State>(initialState)
   })
 
   .on(setRooms, (state, rooms) => {
-    console.log('setRooms', rooms)
     return rooms
   })
 

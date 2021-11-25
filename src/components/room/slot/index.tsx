@@ -4,18 +4,28 @@ import { Player } from '../../../store/game/players/types'
 import './_index.scss'
 
 interface RoomSlotComponentProps {
+  index: number,
   player?: Player,
-  joinable: boolean
+  joinable: boolean,
+  exitable: boolean,
+  onJoin: Function,
+  onExit: Function
 }
 
-function RoomSlotComponent ({ player, joinable }: RoomSlotComponentProps) {
-  const join = () => {
-    console.log('join')
+function RoomSlotComponent (props: RoomSlotComponentProps) {
+  const join = e => {
+    e.preventDefault()
+    props.onJoin(props.index)
+  }
+
+  const exit = e => {
+    e.preventDefault()
+    props.onExit(props.index)
   }
 
   const playerContent = () => {
-    if (player) {
-      return <div>player {player.name}</div>
+    if (props.player) {
+      return <div>player {props.player.name}</div>
     }
     return null
   }
@@ -23,7 +33,8 @@ function RoomSlotComponent ({ player, joinable }: RoomSlotComponentProps) {
   return (
     <div className="component -room-slot">
       {playerContent()}
-      {joinable && <a href="#" onClick={join}>join</a>}
+      {props.exitable && <a href="#" onClick={e => exit(e)}>exit</a>}
+      {props.joinable && <a href="#" onClick={e => join(e)}>join</a>}
     </div>
   )
 }
