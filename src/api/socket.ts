@@ -3,6 +3,7 @@ import { io } from 'socket.io-client'
 import { setSocket } from '../store/socket/events'
 import { showNotification } from '../store/notifications/events'
 import { $auth } from '../store/auth/store'
+import { addRoom } from '../store/rooms/events'
 
 const addSocketListeners = socket => {
   socket.on('connect', () => {
@@ -14,10 +15,7 @@ const addSocketListeners = socket => {
   })
 
   socket.on('room-created', data => {
-    showNotification({
-      heading: 'Room created',
-      content: data.toString()
-    })
+    addRoom(data)
   })
 
   socket.on('disconnect', () => {

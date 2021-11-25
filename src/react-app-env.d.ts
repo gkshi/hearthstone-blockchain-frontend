@@ -2,6 +2,8 @@
 
 import { AxiosError } from 'axios'
 
+export type ID = string | number
+
 export module Api {
   export interface ApiErrorData {
     message?: string,
