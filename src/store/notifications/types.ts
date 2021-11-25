@@ -23,7 +23,6 @@ export interface Notification {
 }
 
 const defaultNotificationProps = {
-  id: Math.random().toFixed(10).slice(2),
   type: 'default',
   heading: '',
   content: '',
@@ -37,7 +36,7 @@ export class Notification {
   constructor (props) {
     const mergedProps = { ...defaultNotificationProps, ...props }
 
-    this.id = mergedProps.id
+    this.id = Math.random().toFixed(10).slice(2)
     this.type = mergedProps.type
     this.heading = mergedProps.heading
     this.content = mergedProps.content

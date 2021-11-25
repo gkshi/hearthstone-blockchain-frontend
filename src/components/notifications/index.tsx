@@ -10,7 +10,7 @@ function NotificationsComponent () {
   const list = useStore($notifications)
 
   const notifications = () => {
-    return list.map((item, i) => <Notification data={item} key={i} />)
+    return list.map((item, i) => <Notification data={item} key={item.id} />)
   }
 
   return (
