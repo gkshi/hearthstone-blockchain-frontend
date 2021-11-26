@@ -10,8 +10,10 @@ interface RoomSlotComponentProps {
   player?: Player,
   joinable: boolean,
   exitable: boolean,
+  droppable: boolean,
   onJoin: Function,
-  onExit: Function
+  onExit: Function,
+  onDrop: Function
 }
 
 function RoomSlotComponent (props: RoomSlotComponentProps) {
@@ -29,7 +31,12 @@ function RoomSlotComponent (props: RoomSlotComponentProps) {
     props.onExit(props.index)
   }
 
-  const playerContent = () => {
+  const drop = e => {
+    e.preventDefault()
+    props.onDrop(props.index)
+  }
+
+  const player = () => {
     if (props.player) {
       return <div>player {props.player.name}</div>
     }
@@ -38,8 +45,9 @@ function RoomSlotComponent (props: RoomSlotComponentProps) {
 
   return (
     <div className="component -room-slot">
-      {playerContent()}
+      {player()}
       {isWaiting() && <Loader />}
+      {props.droppable && <a href="#" onClick={e => drop(e)}>drop</a>}
       {props.exitable && <a href="#" onClick={e => exit(e)}>exit</a>}
       {props.joinable && <a href="#" onClick={e => join(e)}>join</a>}
     </div>

@@ -38,6 +38,11 @@ function RoomComponent ({ data }: RoomComponentProps) {
     return slotPlayer?._id === user._id
   }
 
+  const isDroppable = slotIndex => {
+    const slotPlayer = data.players[slotIndex]
+    return isHost() && !!slotPlayer && slotPlayer._id !== user._id
+  }
+
   const closeRoom = () => {
     socket.emit('close-room', data.id)
   }
@@ -58,6 +63,14 @@ function RoomComponent ({ data }: RoomComponentProps) {
     })
   }
 
+  const onDrop = index => {
+    socket.emit('exit-from-room', {
+      room: data.id,
+      player: data.players[index],
+      index
+    })
+  }
+
   const slots = () => {
     const arr = []
     for (let i = 0; i < data.slots; i++) {
@@ -69,8 +82,10 @@ function RoomComponent ({ data }: RoomComponentProps) {
       index={i}
       joinable={isJoinable(i)}
       exitable={isExitable(i)}
+      droppable={isDroppable(i)}
       onJoin={onJoin}
       onExit={onExit}
+      onDrop={onDrop}
     />)
   }
 
