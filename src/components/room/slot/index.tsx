@@ -1,6 +1,8 @@
 import React from 'react'
 import { Player } from '../../../store/game/players/types'
 
+import Loader from '../../loader'
+
 import './_index.scss'
 
 interface RoomSlotComponentProps {
@@ -13,6 +15,10 @@ interface RoomSlotComponentProps {
 }
 
 function RoomSlotComponent (props: RoomSlotComponentProps) {
+  const isWaiting = () => {
+    return !props.player && !props.joinable
+  }
+
   const join = e => {
     e.preventDefault()
     props.onJoin(props.index)
@@ -33,6 +39,7 @@ function RoomSlotComponent (props: RoomSlotComponentProps) {
   return (
     <div className="component -room-slot">
       {playerContent()}
+      {isWaiting() && <Loader />}
       {props.exitable && <a href="#" onClick={e => exit(e)}>exit</a>}
       {props.joinable && <a href="#" onClick={e => join(e)}>join</a>}
     </div>

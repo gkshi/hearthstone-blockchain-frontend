@@ -23,6 +23,12 @@ const addSocketListeners = socket => {
     addRoom(data)
   })
 
+  socket.on('game-starts', () => {
+    showNotification({
+      heading: 'Game starts'
+    })
+  })
+
   socket.on('disconnect', () => {
     showNotification({
       type: 'success',
