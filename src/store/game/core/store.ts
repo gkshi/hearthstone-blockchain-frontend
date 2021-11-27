@@ -13,8 +13,11 @@ import { Company, Modal, State } from './types'
 import { generateFieldSet, getGameConfig } from '../../../helpers/game'
 import { setActivePlayer, setPlayerSet } from '../players/events'
 import { detectChipPositions, setChipSet } from '../chips/events'
+import { Client } from '../players/types'
 
 const initialState = (): State => ({
+  id: null,
+  slots: 0,
   fields: [],
   players: [],
 
@@ -35,29 +38,32 @@ export const $game = createStore<State>(initialState())
   .on(initGame, (state, data) => {
     setLog('Game inited.')
     const fields = generateFieldSet()
-    return { ...state, fields, isInited: true }
+    const gameConfig = getGameConfig(data.rules)
+    const initialBalance = gameConfig.initialBalance
+    setPlayerSet({
+      clients: (data.players as Client[]),
+      initialBalance
+    })
+
+    return {
+      ...state,
+      id: data.id,
+      payers: data.players,
+      fields,
+      isInited: true
+    }
   })
 
   .on(startGame, (state, data) => {
     setLog('Game started.')
-    // config
-    const gameConfig = getGameConfig(data.rules)
-    setChipSet(data.clients.length)
+    setChipSet(state.slots)
     detectChipPositions()
-
-    // players
-    const initialBalance = gameConfig.initialBalance
-    setPlayerSet({
-      clients: data.clients,
-      initialBalance
-    })
-    setActivePlayer(data.clients[0]._id)
-
+    setActivePlayer(state.players[0]._id)
     return state
   })
 
   .on(resetGame, (state) => {
-    setLog('Игра сброшена.')
+    setLog('Game reseted.')
     return initialState()
   })
 

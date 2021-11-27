@@ -34,10 +34,6 @@ function HomePage () {
           <RoomCreator />
         </section>
       </div>
-
-      <section>
-        <UIButton routeName="game">game</UIButton>
-      </section>
     </div>
   )
 }

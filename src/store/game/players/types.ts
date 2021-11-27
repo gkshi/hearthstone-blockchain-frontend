@@ -4,11 +4,17 @@ export type PlayerColor = 'red' | 'yellow' | 'green' | 'blue' | 'violet'
 
 export interface Client {
   _id: ID,
+  name?: string
 }
 
 export interface PlayerSet {
   clients: Client[],
   initialBalance: Price
+}
+
+export interface PlayerOptions {
+  _id?: ID,
+  name?: string
 }
 
 export interface Player {

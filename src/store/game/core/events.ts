@@ -1,7 +1,7 @@
 import { GameDomain } from './domain'
-import { DiceProps, GameData, ModalProps, FieldBuyingProps } from './types'
+import { DiceProps, GameData, GameInitOptions, ModalProps, FieldBuyingProps } from './types'
 
-export const initGame = GameDomain.createEvent<void>('init game')
+export const initGame = GameDomain.createEvent<GameInitOptions>('init game')
 export const startGame = GameDomain.createEvent<GameData>('start game')
 export const resetGame = GameDomain.createEvent<void>('reset game')
 

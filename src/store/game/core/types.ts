@@ -1,9 +1,16 @@
-import { Player, PlayerColor } from '../players/types'
+import { Player, PlayerColor, PlayerOptions } from '../players/types'
 
 // global
 export type ID = number | string
 export type Price = number | string
 export type GameRules = 'classic'
+
+export interface GameInitOptions {
+  id: ID,
+  slots: number,
+  rules: string,
+  players: PlayerOptions[]
+}
 
 export interface GameData {
   rules: GameRules,
@@ -103,6 +110,8 @@ export interface FieldBuyingProps {
 
 // game state
 export interface State {
+  id?: ID,
+  slots: number,
   players: Player[],
   fields: GameField[],
 
