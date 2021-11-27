@@ -6,6 +6,7 @@ import { Room } from './store/rooms/types'
 export type ID = string | number
 
 export interface SyncData {
+  hasActiveGame: boolean,
   rooms: Room[]
 }
 
