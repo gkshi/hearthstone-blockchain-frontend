@@ -22,6 +22,8 @@ export interface Notification {
   closable: boolean
 }
 
+export type NotificationOrID = NotificationOptions | NotificationID
+
 const defaultNotificationProps = {
   type: 'default',
   heading: '',
@@ -36,7 +38,7 @@ export class Notification {
   constructor (props) {
     const mergedProps = { ...defaultNotificationProps, ...props }
 
-    this.id = Math.random().toFixed(10).slice(2)
+    this.id = props.id || Math.random().toFixed(10).slice(2)
     this.type = mergedProps.type
     this.heading = mergedProps.heading
     this.content = mergedProps.content

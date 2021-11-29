@@ -1,0 +1,17 @@
+@import "src/assets/scss/variables";
+
+.component.-notification {
+  position: relative;
+  padding: 20px 30px;
+  border-radius: $border-radius-small;
+  background: $color-content-bg;
+  color: $color-text-light;
+
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    z-index: 1;
+    cursor: pointer;
+  }
+}

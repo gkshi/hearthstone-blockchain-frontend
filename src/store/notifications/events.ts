@@ -1,7 +1,7 @@
 import { NotificationsDomain } from './domain'
-import { NotificationID, NotificationOptions } from './types'
+import { NotificationID, NotificationOrID } from './types'
 
-export const showNotification = NotificationsDomain.createEvent<NotificationOptions>('show notification')
+export const showNotification = NotificationsDomain.createEvent<NotificationOrID>('show notification')
 
 export const hideNotification = NotificationsDomain.createEvent<NotificationID>('hide notification')
 

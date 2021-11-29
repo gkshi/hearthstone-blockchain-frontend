@@ -3,7 +3,7 @@ import React from 'react'
 import './_index.scss'
 
 import HeaderComponent from '../../components/header'
-import Notifications from '../../components/notifications'
+import NotificationController from '../../components/notifications/controller'
 
 interface LayoutProps {
   children?: React.ReactNode
@@ -19,7 +19,7 @@ function DefaultLayout ({ children }: LayoutProps) {
         </div>
       </main>
 
-      <Notifications />
+      <NotificationController />
     </div>
   )
 }

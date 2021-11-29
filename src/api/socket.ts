@@ -17,9 +17,7 @@ const addSocketListeners = socket => {
 
   socket.on('sync', (data: SyncData) => {
     if (data.hasActiveGame) {
-      showNotification({
-        heading: 'hasActiveGame'
-      })
+      showNotification('has-active-game')
     }
     setRooms(data.rooms)
   })

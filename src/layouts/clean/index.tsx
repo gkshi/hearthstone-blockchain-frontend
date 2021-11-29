@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import NotificationController from '../../components/notifications/controller'
+
 import './_index.scss'
 
 const SimpleLayout: React.FC = ({ children }) => {
@@ -9,6 +11,8 @@ const SimpleLayout: React.FC = ({ children }) => {
       <main>
         {children}
       </main>
+
+      <NotificationController />
     </div>
   )
 }

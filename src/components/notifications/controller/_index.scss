@@ -1,0 +1,14 @@
+@import "src/assets/scss/variables";
+
+.component.-notifications {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}

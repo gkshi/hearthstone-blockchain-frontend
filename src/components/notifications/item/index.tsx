@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { NotificationOptions } from '../../store/notifications/types'
-import { hideNotification } from '../../store/notifications/events'
+import { Notification, NotificationOptions } from '../../../store/notifications/types'
+import { hideNotification } from '../../../store/notifications/events'
 
-import IconCross from '../icons/cross'
+import IconCross from '../../icons/cross'
 
-interface NotificationProps {
+import './_index.scss'
+
+interface NotificationProps extends React.ComponentProps<any> {
   data?: NotificationOptions
 }
 
-function NotificationComponent ({ data }: NotificationProps) {
+function NotificationComponent ({ data, children }: NotificationProps) {
+  data = new Notification(data)
   const [timer, setTimer] = useState(null)
 
   const setHideTimeout = () => {
@@ -35,7 +38,10 @@ function NotificationComponent ({ data }: NotificationProps) {
       </div>}
 
       {data.heading && <div>{data.heading}</div>}
-      <div dangerouslySetInnerHTML={{ __html: data.content }} />
+
+      {children
+        ? <div>{children}</div>
+        : <div dangerouslySetInnerHTML={{ __html: data.content }} />}
     </div>
   )
 }
