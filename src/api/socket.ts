@@ -32,6 +32,13 @@ const addSocketListeners = socket => {
     })
   })
 
+  socket.on('game-left', id => {
+    showNotification({
+      heading: 'You left the game',
+      content: `ID #${id}`
+    })
+  })
+
   socket.on('disconnect', () => {
     showNotification({
       type: 'success',

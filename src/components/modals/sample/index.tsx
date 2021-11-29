@@ -6,7 +6,7 @@ import UIButton from '../../ui/button'
 
 import './_index.scss'
 
-function DeleteItemModal () {
+function SampleModal () {
   const id = 'sample'
 
   const onOpen = () => {}
@@ -31,4 +31,4 @@ function DeleteItemModal () {
   )
 }
 
-export default DeleteItemModal
+export default SampleModal

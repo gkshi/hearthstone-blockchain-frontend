@@ -3,6 +3,7 @@ import {
   showGameModal,
   buyField as _buyField
 } from '../../../store/game/core/events'
+import { openModal } from '../../../store/modals/events'
 
 import UIButton from '../../ui/button'
 
@@ -25,6 +26,10 @@ function GameMenuComponent () {
     })
   }
 
+  const onLeaveClick = () => {
+    openModal('leave-game')
+  }
+
   return (
     <div className="component -game-menu">
       <div className="system-menu">
@@ -33,7 +38,7 @@ function GameMenuComponent () {
       </div>
 
       <UIButton theme="dark">Help</UIButton>
-      <UIButton className="hover-danger" theme="dark">Leave game</UIButton>
+      <UIButton className="hover-danger" theme="dark" onClick={onLeaveClick}>Leave game</UIButton>
     </div>
   )
 }
