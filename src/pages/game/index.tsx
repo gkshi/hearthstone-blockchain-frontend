@@ -3,6 +3,7 @@ import { useStore } from 'effector-react'
 import { router } from '../../index'
 import { SyncData } from '../../react-app-env'
 import { $socket } from '../../store/socket/store'
+import { initGame } from '../../store/game/core/events'
 
 import GameTable from '../../components/game/table'
 import GamePlayers from '../../components/game/players'
@@ -19,6 +20,12 @@ function GamePage () {
         router.navigate('home')
       }
     })
+
+    socket.on('sync-game', data => {
+      initGame(data)
+    })
+
+    socket.emit('sync-game')
   }, [])
 
   return (
