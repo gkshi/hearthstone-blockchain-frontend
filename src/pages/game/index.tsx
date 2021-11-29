@@ -4,6 +4,8 @@ import { router } from '../../index'
 import { SyncData } from '../../react-app-env'
 import { $socket } from '../../store/socket/store'
 import { initGame } from '../../store/game/core/events'
+import { setActivePlayer } from '../../store/game/players/events'
+import { Player } from '../../store/game/players/types'
 
 import GameTable from '../../components/game/table'
 import GamePlayers from '../../components/game/players'
@@ -23,6 +25,11 @@ function GamePage () {
 
     socket.on('sync-game', data => {
       initGame(data)
+      setActivePlayer(data.activePlayer._id)
+    })
+
+    socket.on('game:set-active-player', (player: Player) => {
+      setActivePlayer(player._id)
     })
 
     socket.emit('sync-game')

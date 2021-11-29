@@ -13,13 +13,12 @@ const initialState = (): State => ({
 
 export const $gamePlayers = createStore<State>(initialState())
   .on(setPlayerSet, (state, data) => {
-    setLog('Player set generated.')
     const players = generatePlayerSet(data.clients, data.initialBalance)
     return { ...state, players }
   })
   .on(setActivePlayer, (state, id) => {
-    setLog('Active player set.')
     const activePlayer = state.players.find(i => i._id === id)
+    setLog(`Now is ${activePlayer.color} player's turn.`)
     setActiveChip(activePlayer.color)
     return { ...state, activePlayer }
   })

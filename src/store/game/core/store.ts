@@ -36,7 +36,7 @@ const initialState = (): State => ({
 
 export const $game = createStore<State>(initialState())
   .on(initGame, (state, data) => {
-    setLog('Game inited.')
+    setLog('Game initialized.')
     const fields = generateFieldSet()
     const gameConfig = getGameConfig(data.rules)
     const initialBalance = gameConfig.initialBalance

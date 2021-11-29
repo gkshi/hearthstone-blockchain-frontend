@@ -206,7 +206,6 @@ export const getFieldNumber = (fieldId) => {
 
 export const getFieldByNumber = (number) => {
   const fields = $game.getState().fields
-  console.log('fields', fields.map(i => i.id))
   number = number % fields.length
 
   return fields[number - 1]

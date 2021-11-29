@@ -27,7 +27,6 @@ export const $gameChips = createStore<State>(initialState())
   })
 
   .on(detectChipPositions, state => {
-    console.log('#detectChipPositions')
     setLog('Chip positions detected.')
     let chips = state.chips
     chips = chips.map((chip, i) => {
