@@ -2,6 +2,7 @@ import React from 'react'
 import { closeModal } from '../../store/modals/events'
 import { useStore } from 'effector-react'
 import { $socket } from '../../store/socket/store'
+import { useRouter } from 'react-router5'
 
 import ModalWrapper from './wrapper'
 import UIButton from '../ui/button'
@@ -9,6 +10,7 @@ import UIButton from '../ui/button'
 function LeaveGameModal () {
   const id = 'leave-game'
   const socket = useStore($socket).socket
+  const router = useRouter()
 
   const cancel = () => {
     closeModal(id)
@@ -17,6 +19,7 @@ function LeaveGameModal () {
   const leave = () => {
     socket.emit('leave-game')
     cancel()
+    router.navigate('home')
   }
 
   return (

@@ -18,6 +18,9 @@ export const $gamePlayers = createStore<State>(initialState())
   })
   .on(setActivePlayer, (state, id) => {
     const activePlayer = state.players.find(i => i._id === id)
+    if (state.activePlayer && state.activePlayer._id === id) {
+      return state
+    }
     setLog(`Now is ${activePlayer.color} player's turn.`)
     setActiveChip(activePlayer.color)
     return { ...state, activePlayer }

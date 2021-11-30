@@ -8,6 +8,12 @@
     text-overflow: ellipsis;
   }
 
+  .intro {
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 100%;
+  }
+
   section {
     margin: 20px auto;
   }

@@ -112,11 +112,8 @@ export interface FieldBuyingProps {
 export interface State {
   id?: ID,
   slots: number,
-  players: Player[],
   fields: GameField[],
 
-  currentPlayer: Player | null,
-  activePlayer: Player | null,
   modal: Modal,
 
   dices: {
@@ -124,6 +121,6 @@ export interface State {
     values: DiceProps
   },
 
-  isInited: boolean,
+  isInitialized: boolean,
   turn: number
 }

@@ -14,15 +14,13 @@ import { generateFieldSet, getGameConfig } from '../../../helpers/game'
 import { setActivePlayer, setPlayerSet } from '../players/events'
 import { detectChipPositions, setChipSet } from '../chips/events'
 import { Client } from '../players/types'
+import $gamePlayers from '../players/store'
 
 const initialState = (): State => ({
   id: null,
   slots: 0,
   fields: [],
-  players: [],
 
-  currentPlayer: null,
-  activePlayer: null,
   modal: null,
 
   dices: {
@@ -31,7 +29,7 @@ const initialState = (): State => ({
   },
 
   turn: 0,
-  isInited: false
+  isInitialized: false
 })
 
 export const $game = createStore<State>(initialState())
@@ -49,16 +47,18 @@ export const $game = createStore<State>(initialState())
       ...state,
       id: data.id,
       payers: data.players,
+      slots: data.slots,
       fields,
-      isInited: true
+      isInitialized: true
     }
   })
 
-  .on(startGame, (state, data) => {
-    setLog('Game started.')
+  .on(startGame, state => {
     setChipSet(state.slots)
     detectChipPositions()
-    setActivePlayer(state.players[0]._id)
+    const players = $gamePlayers.getState().players
+    setLog('Game started.')
+    setActivePlayer(players[0]._id)
     return state
   })
 

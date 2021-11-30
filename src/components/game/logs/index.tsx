@@ -14,7 +14,9 @@ function GameLogsComponent () {
   return (
     <div className="component -game-logs">
       <div className="scroll-parent">
-        {logs()}
+        <div className="intro">
+          {logs()}
+        </div>
       </div>
     </div>
   )

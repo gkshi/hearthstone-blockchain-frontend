@@ -3,9 +3,11 @@ import { useStore } from 'effector-react'
 import { router } from '../../index'
 import { SyncData } from '../../react-app-env'
 import { $socket } from '../../store/socket/store'
-import { initGame } from '../../store/game/core/events'
+import { initGame, showGameModal, startGame } from '../../store/game/core/events'
 import { setActivePlayer } from '../../store/game/players/events'
 import { Player } from '../../store/game/players/types'
+import { $auth } from '../../store/auth/store'
+import { $game } from '../../store/game/core/store'
 
 import GameTable from '../../components/game/table'
 import GamePlayers from '../../components/game/players'
@@ -14,7 +16,18 @@ import GameMenu from '../../components/game/menu'
 import './_index.scss'
 
 function GamePage () {
+  const user = useStore($auth).user
+  const game = useStore($game)
   const socket = useStore($socket).socket
+
+  const setActivePlayerAndShowDices = (player: Player) => {
+    setActivePlayer(player._id)
+    if (player._id === user._id) {
+      showGameModal({
+        type: 'turn'
+      })
+    }
+  }
 
   useEffect(() => {
     socket.on('sync', (data: SyncData) => {
@@ -24,12 +37,15 @@ function GamePage () {
     })
 
     socket.on('sync-game', data => {
-      initGame(data)
-      setActivePlayer(data.activePlayer._id)
+      if (!game.isInitialized) {
+        initGame(data)
+        startGame()
+      }
+      setActivePlayerAndShowDices(data.activePlayer)
     })
 
     socket.on('game:set-active-player', (player: Player) => {
-      setActivePlayer(player._id)
+      setActivePlayerAndShowDices(player)
     })
 
     socket.emit('sync-game')

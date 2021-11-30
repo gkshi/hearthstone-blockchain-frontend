@@ -5,7 +5,7 @@ import { State, Log } from './types'
 export const $game = createStore<State>([])
   .on(setLog, (state, data) => {
     const log = new Log(data)
-    return [...state, log]
+    return [log, ...state]
   })
 
 export default $game

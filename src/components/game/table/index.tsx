@@ -13,7 +13,7 @@ import { useStore } from 'effector-react'
 import $game from '../../../store/game/core/store'
 
 function GameTableComponent () {
-  const isGameInited = useStore($game).isInited
+  const isGameInitialized = useStore($game).isInitialized
 
   const [tableWidth, setTableWidth] = useState(0)
   const [tableHeight, setTableHeight] = useState(0)
@@ -85,7 +85,7 @@ function GameTableComponent () {
     }
   }, [])
 
-  if (!isGameInited) {
+  if (!isGameInitialized) {
     return null
   }
 
