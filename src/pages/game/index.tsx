@@ -3,7 +3,7 @@ import { useStore } from 'effector-react'
 import { router } from '../../index'
 import { SyncData } from '../../react-app-env'
 import { $socket } from '../../store/socket/store'
-import { initGame, showGameModal, startGame } from '../../store/game/core/events'
+import { syncGame, initGame, showGameModal } from '../../store/game/core/events'
 import { setActivePlayer } from '../../store/game/players/events'
 import { Player } from '../../store/game/players/types'
 import { $auth } from '../../store/auth/store'
@@ -39,8 +39,8 @@ function GamePage () {
     socket.on('sync-game', data => {
       if (!game.isInitialized) {
         initGame(data)
-        startGame()
       }
+      syncGame(data)
       setActivePlayerAndShowDices(data.activePlayer)
     })
 

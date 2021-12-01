@@ -19,7 +19,6 @@ function GameMenuComponent () {
 
   const buyField = (e) => {
     e.preventDefault()
-    console.log('buyField')
     _buyField({
       field: 'adidas',
       owner: 'red'

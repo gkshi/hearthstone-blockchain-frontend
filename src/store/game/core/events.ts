@@ -2,7 +2,7 @@ import { GameDomain } from './domain'
 import { DiceProps, GameInitOptions, ModalProps, FieldBuyingProps } from './types'
 
 export const initGame = GameDomain.createEvent<GameInitOptions>('init game')
-export const startGame = GameDomain.createEvent<void>('start game')
+export const syncGame = GameDomain.createEvent<GameInitOptions>('sync game')
 export const resetGame = GameDomain.createEvent<void>('reset game')
 
 export const showGameModal = GameDomain.createEvent<ModalProps>('show game modal')

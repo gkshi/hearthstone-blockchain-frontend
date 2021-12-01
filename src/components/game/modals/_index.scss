@@ -8,4 +8,16 @@
   width: 100%;
   padding: 20px;
   background: $color-page-bg-dark;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(180deg, $color-page-bg-dark, rgba($color-page-bg-dark, 0));
+  }
 }

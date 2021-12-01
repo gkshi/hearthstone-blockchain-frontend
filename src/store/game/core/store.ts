@@ -1,7 +1,7 @@
 import { createStore } from 'effector'
 import {
   initGame,
-  startGame,
+  syncGame,
   resetGame,
   showGameModal,
   hideGameModal,
@@ -53,9 +53,9 @@ export const $game = createStore<State>(initialState())
     }
   })
 
-  .on(startGame, state => {
+  .on(syncGame, (state, data) => {
     setChipSet(state.slots)
-    detectChipPositions()
+    setTimeout(() => detectChipPositions(), 0)
     const players = $gamePlayers.getState().players
     setLog('Game started.')
     setActivePlayer(players[0]._id)

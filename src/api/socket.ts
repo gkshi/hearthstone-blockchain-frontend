@@ -1,7 +1,7 @@
 import { $socket } from '../store/socket/store'
 import { io } from 'socket.io-client'
 import { setSocket } from '../store/socket/events'
-import { showNotification } from '../store/notifications/events'
+import { showNotification, hideNotification } from '../store/notifications/events'
 import { $auth } from '../store/auth/store'
 import { addRoom, setRooms } from '../store/rooms/events'
 import { SyncData } from '../react-app-env'
@@ -16,9 +16,9 @@ const addSocketListeners = socket => {
   })
 
   socket.on('sync', (data: SyncData) => {
-    if (data.hasActiveGame) {
-      showNotification('has-active-game')
-    }
+    data.hasActiveGame
+      ? showNotification('has-active-game')
+      : hideNotification('has-active-game')
     setRooms(data.rooms)
   })
 
