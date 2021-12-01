@@ -5,6 +5,7 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  transition: $transition-dice;
 
   .intro {
     position: absolute;
@@ -167,18 +168,34 @@
     margin:77px 0 0 134px;
   }
 
-  .dice-enter {
+  &.-hidden {
     opacity: 0;
-    //transform: scale(0.9);
+    visibility: hidden;
   }
-  .dice-enter-active {
-    opacity: 1;
-  }
-  .dice-exit {
-    opacity: 1;
-  }
-  .dice-exit-active {
+
+  &.dice-enter {
     opacity: 0;
+    transform: scale(.8);
+    visibility: hidden;
+  }
+  &.dice-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+  &.dice-exit {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+  &.dice-exit-active {
+    opacity: 0;
+    transform: scale(.8);
+    visibility: hidden;
+  }
+  &.dice-exit-done {
+    opacity: 0;
+    visibility: hidden;
   }
 
   @keyframes spin {

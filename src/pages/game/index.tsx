@@ -3,7 +3,7 @@ import { useStore } from 'effector-react'
 import { router } from '../../index'
 import { SyncData } from '../../react-app-env'
 import { $socket } from '../../store/socket/store'
-import { syncGame, initGame, showGameModal } from '../../store/game/core/events'
+import { syncGame, initGame, showGameModal, rollTheDice } from '../../store/game/core/events'
 import { setActivePlayer } from '../../store/game/players/events'
 import { Player } from '../../store/game/players/types'
 import { $auth } from '../../store/auth/store'
@@ -29,14 +29,22 @@ function GamePage () {
     }
   }
 
+  const exitFromGamePage = () => {
+    router.navigate('home')
+  }
+
   useEffect(() => {
     socket.on('sync', (data: SyncData) => {
       if (!data.hasActiveGame) {
-        router.navigate('home')
+        exitFromGamePage()
       }
     })
 
-    socket.on('sync-game', data => {
+    socket.on('game:sync', data => {
+      if (!data) {
+        exitFromGamePage()
+        return
+      }
       if (!game.isInitialized) {
         initGame(data)
       }
@@ -48,7 +56,11 @@ function GamePage () {
       setActivePlayerAndShowDices(player)
     })
 
-    socket.emit('sync-game')
+    socket.on('game:roll-the-dice', (values: [number, number]) => {
+      rollTheDice(values)
+    })
+
+    socket.emit('game:sync')
   }, [])
 
   return (

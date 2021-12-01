@@ -11,7 +11,7 @@ export const getGameConfig = (rules) => {
   return gameConfig[rules]
 }
 
-export const generateChipSet = length => {
+export const generateChipSet = (length: number) => {
   const set = []
 
   for (let i = 0; i < length; i++) {

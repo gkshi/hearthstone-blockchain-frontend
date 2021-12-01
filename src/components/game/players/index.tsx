@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStore } from 'effector-react'
-import $gamePlayers from '../../../store/game/players/store'
+import { $gamePlayers } from '../../../store/game/players/store'
 
 import GamePlayer from '../player'
 

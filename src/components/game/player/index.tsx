@@ -2,7 +2,7 @@ import React from 'react'
 import { Player } from '../../../store/game/players/types'
 import { shortCurrencyValue } from '../../../helpers/currency'
 import { useStore } from 'effector-react'
-import $gamePlayers from '../../../store/game/players/store'
+import { $gamePlayers } from '../../../store/game/players/store'
 
 import './_index.scss'
 

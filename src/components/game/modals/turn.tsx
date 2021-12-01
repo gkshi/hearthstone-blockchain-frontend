@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
-import { hideGameModal, rollTheDice } from '../../../store/game/core/events'
-import { setActiveChip } from '../../../store/game/chips/events'
+import React from 'react'
+import { hideGameModal, showDices } from '../../../store/game/core/events'
 import { useStore } from 'effector-react'
 import { $gamePlayers } from '../../../store/game/players/store'
 import { $socket } from '../../../store/socket/store'
@@ -14,15 +13,9 @@ function TurnGameModalComponent () {
 
   const onButtonClick = async () => {
     socket.emit('game:roll-the-dice', activePlayer._id)
+    hideGameModal()
+    showDices()
   }
-
-  useEffect(() => {
-    socket.on('game:roll-the-dice', (values: [number, number]) => {
-      hideGameModal()
-      setActiveChip(activePlayer.color)
-      rollTheDice(values)
-    })
-  }, [])
 
   return (
     <GameModalWrapper id="turn">

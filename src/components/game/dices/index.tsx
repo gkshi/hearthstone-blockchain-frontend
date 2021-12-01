@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useStore } from 'effector-react'
 import { nextTick } from '../../../helpers/next-tick'
-import { getFieldBySteps } from '../../../helpers/game'
 import { hideDices } from '../../../store/game/core/events'
-import { detectChipPositions, moveChip } from '../../../store/game/chips/events'
 import $game from '../../../store/game/core/store'
-import $gameChips from '../../../store/game/chips/store'
 
 import { CSSTransition } from 'react-transition-group'
 
 import './_index.scss'
+import { setLog } from '../../../store/logs/events'
 
 function GameDiceComponent () {
   const storedDices = useStore($game).dices
-  const [show, setShow] = useState(false)
-  const activeChip = useStore($gameChips).activeChip
+  const [minAnimationShown, setMinAnimationShown] = useState(false)
+  const minAnimationDelay = 1000
+  const delayAfterSet = 1200
 
   const hide = () => {
-    setShow(false)
     hideDices()
   }
 
@@ -58,7 +56,19 @@ function GameDiceComponent () {
     el.style.transform = `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg)`
   }
 
-  const animate = () => {
+  const animate = async () => {
+    await nextTick()
+    const platform = document.getElementById('platform')
+    platform.classList.remove('stop')
+    platform.classList.add('playing')
+
+    const platform2 = document.getElementById('platform2')
+    platform2.classList.remove('stop')
+    platform2.classList.add('playing')
+  }
+
+  const stopAnimate = async () => {
+    await nextTick()
     const platform = document.getElementById('platform')
     platform.classList.remove('stop')
     platform.classList.add('playing')
@@ -67,54 +77,55 @@ function GameDiceComponent () {
     platform2.classList.remove('stop')
     platform2.classList.add('playing')
 
-    setTimeout(function () {
-      platform.classList.remove('playing')
-      platform.classList.add('stop')
+    platform.classList.remove('playing')
+    platform.classList.add('stop')
 
-      platform2.classList.remove('playing')
-      platform2.classList.add('stop')
+    platform2.classList.remove('playing')
+    platform2.classList.add('stop')
 
-      const dice1 = document.getElementById('dice1')
-      setDiceValue(storedDices.values[0], dice1)
-      const dice2 = document.getElementById('dice2')
-      setDiceValue(storedDices.values[1], dice2)
+    const dice1 = document.getElementById('dice1')
+    setDiceValue(storedDices.values[0], dice1)
+    const dice2 = document.getElementById('dice2')
+    setDiceValue(storedDices.values[1], dice2)
 
-      platform.style.transform = 'translate3d(-180px,0, 0px)'
-      platform2.style.transform = 'translate3d(180px,0, 0px)'
+    platform.style.transform = 'translate3d(-180px,0, 0px)'
+    platform2.style.transform = 'translate3d(180px,0, 0px)'
+  }
 
-      const values = storedDices.values
-      const targetField = getFieldBySteps(activeChip.field, values, 'default')
-      moveChip({
-        chip: activeChip._id,
-        field: targetField.id
-      })
-      detectChipPositions()
-    }, 600)
+  const setValuesAndStop = () => {
+    if (storedDices.values.length && minAnimationShown) {
+      setLog(`Брошены кости (${storedDices.values.toString()}).`)
+      stopAnimate()
+      setTimeout(hide, delayAfterSet)
+    }
   }
 
   useEffect(() => {
-    setShow(storedDices.show)
+    setValuesAndStop()
+  }, [minAnimationShown])
+
+  useEffect(() => {
+    if (storedDices.show) {
+      animate()
+      setTimeout(() => {
+        setMinAnimationShown(true)
+      }, minAnimationDelay)
+    } else {
+      setMinAnimationShown(false)
+    }
   }, [storedDices.show])
 
   useEffect(() => {
-    if (show) {
-      nextTick(() => {
-        animate()
-      })
-      setTimeout(() => {
-        hide()
-      }, 2200)
-    }
-  }, [show])
+    setValuesAndStop()
+  }, [storedDices.values])
 
   return (
     <CSSTransition
-      in={show}
-      timeout={0}
+      in={storedDices.show}
+      timeout={300}
       classNames="dice"
-      unmountOnExit
     >
-      <div className="component -game-dice">
+      <div className={`component -game-dice ${!storedDices.show ? '-hidden' : ''}`}>
         <div className="intro">
           <div id="platform" className="platform flex center">
             <div className="dice" id="dice1">

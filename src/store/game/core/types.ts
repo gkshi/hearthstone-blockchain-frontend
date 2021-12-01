@@ -1,20 +1,19 @@
-import { Player, PlayerColor, PlayerOptions } from '../players/types'
+import { PlayerColor, PlayerOptions } from '../players/types'
+import { Chip } from '../chips/types'
 
 // global
 export type ID = number | string
 export type Price = number | string
 export type GameRules = 'classic'
 
-export interface GameInitOptions {
+export interface GameData {
   id: ID,
   slots: number,
   rules: string,
-  players: PlayerOptions[]
-}
-
-export interface GameData {
-  rules: GameRules,
-  clients: any[]
+  players: PlayerOptions[],
+  chips: {
+    list: Chip[]
+  }
 }
 
 export type GameField = Field | Company

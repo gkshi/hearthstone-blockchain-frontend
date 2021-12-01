@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import $game from '../../../store/game/core/store'
-import { buyField } from '../../../store/game/core/events'
 import { useStore } from 'effector-react'
 import { Company, FieldData } from '../../../store/game/core/types'
 import { Placement } from 'tippy.js'

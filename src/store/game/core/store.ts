@@ -6,7 +6,7 @@ import {
   showGameModal,
   hideGameModal,
   rollTheDice,
-  hideDices, buyField
+  hideDices, buyField, showDices
 } from './events'
 import { setLog } from '../../logs/events'
 import { Company, Modal, State } from './types'
@@ -54,11 +54,9 @@ export const $game = createStore<State>(initialState())
   })
 
   .on(syncGame, (state, data) => {
-    setChipSet(state.slots)
+    setChipSet(data.chips.list)
     setTimeout(() => detectChipPositions(), 0)
-    const players = $gamePlayers.getState().players
     setLog('Game started.')
-    setActivePlayer(players[0]._id)
     return state
   })
 
@@ -76,8 +74,14 @@ export const $game = createStore<State>(initialState())
     return { ...state, modal: null }
   })
 
+  .on(showDices, state => {
+    return {
+      ...state,
+      dices: { show: true, values: [] }
+    }
+  })
+
   .on(rollTheDice, (state, values) => {
-    setLog(`Брошены кости (${values.toString()}).`)
     return {
       ...state,
       dices: { show: true, values }

@@ -1,9 +1,8 @@
 import { createStore } from 'effector'
-import { calculateChipCoordinates, generateChipSet } from '../../../helpers/game'
+import { calculateChipCoordinates } from '../../../helpers/game'
 import { setLog } from '../../logs/events'
 import { detectChipPositions, moveChip, setActiveChip, setChipSet } from './events'
 import { State } from './types'
-import $game from '../core/store'
 
 const initialState = (): State => ({
   chips: [],
@@ -11,14 +10,8 @@ const initialState = (): State => ({
 })
 
 export const $gameChips = createStore<State>(initialState())
-  .on(setChipSet, (state, length) => {
-    setLog('Chip set generated.')
-    const field = $game.getState().fields.find(i => i.id === 'start')
-    let chips = generateChipSet(length)
-    chips = chips.map(chip => {
-      return { ...chip, field: field.id }
-    })
-    return { ...state, chips }
+  .on(setChipSet, (state, data) => {
+    return { ...state, chips: data }
   })
 
   .on(setActiveChip, (state, color) => {
@@ -27,7 +20,6 @@ export const $gameChips = createStore<State>(initialState())
   })
 
   .on(detectChipPositions, state => {
-    setLog('Chip positions detected.')
     let chips = state.chips
     chips = chips.map((chip, i) => {
       chip.coordinates = calculateChipCoordinates(chip._id)

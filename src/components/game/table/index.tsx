@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { nextTick } from '../../../helpers/next-tick'
+import { useStore } from 'effector-react'
+import { $game } from '../../../store/game/core/store'
 import { items } from '../../../config/items'
 
 import TableItem from '../item'
@@ -9,8 +11,6 @@ import GameModals from '../modals'
 import GameLogs from '../logs'
 
 import './_index.scss'
-import { useStore } from 'effector-react'
-import $game from '../../../store/game/core/store'
 
 function GameTableComponent () {
   const isGameInitialized = useStore($game).isInitialized
@@ -114,7 +114,8 @@ function GameTableComponent () {
       </div>
 
       <div className="middle flex center">
-        <GameDices />
+        {/* {storedDices.show ? <GameDices/> : <GameModals />} */}
+        <GameDices/>
         <GameModals />
         <GameLogs />
       </div>

@@ -2,7 +2,6 @@ import React from 'react'
 import { useStore } from 'effector-react'
 import { $auth } from '../../store/auth/store'
 
-import UIButton from '../../components/ui/button'
 import RoomCreator from '../../components/room-creator'
 import RoomList from '../../components/room/list'
 
