@@ -1,7 +1,7 @@
 import { createStore } from 'effector'
 import { calculateChipCoordinates } from '../../../helpers/game'
 import { setLog } from '../../logs/events'
-import { detectChipPositions, moveChip, setActiveChip, setChipSet } from './events'
+import { detectChipPositions, moveChip, setActiveChip, setChipSet, clearAllChipsData } from './events'
 import { State } from './types'
 
 const initialState = (): State => ({
@@ -37,6 +37,10 @@ export const $gameChips = createStore<State>(initialState())
       return chip
     })
     return { ...state, chips }
+  })
+
+  .on(clearAllChipsData, state => {
+    return initialState()
   })
 
 export default $gameChips

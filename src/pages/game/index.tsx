@@ -3,11 +3,13 @@ import { useStore } from 'effector-react'
 import { router } from '../../index'
 import { SyncData } from '../../react-app-env'
 import { $socket } from '../../store/socket/store'
-import { syncGame, initGame, showGameModal, rollTheDice } from '../../store/game/core/events'
-import { setActivePlayer } from '../../store/game/players/events'
+import { syncGame, initGame, showGameModal, rollTheDice, setWinner } from '../../store/game/core/events'
+import { dropPlayer, setActivePlayer } from '../../store/game/players/events'
 import { Player } from '../../store/game/players/types'
 import { $auth } from '../../store/auth/store'
 import { $game } from '../../store/game/core/store'
+import { showNotification } from '../../store/notifications/events'
+import { openModal } from '../../store/modals/events'
 
 import GameTable from '../../components/game/table'
 import GamePlayers from '../../components/game/players'
@@ -58,6 +60,21 @@ function GamePage () {
 
     socket.on('game:roll-the-dice', (values: [number, number]) => {
       rollTheDice(values)
+    })
+
+    socket.on('game:player-left', playerId => {
+      dropPlayer(playerId)
+      if (user._id === playerId) {
+        showNotification({
+          heading: 'You left the game'
+        })
+      }
+    })
+
+    socket.on('game:finish', winner => {
+      console.log('# game:finish', winner)
+      setWinner(winner)
+      openModal('game-finished')
     })
 
     socket.emit('game:sync')

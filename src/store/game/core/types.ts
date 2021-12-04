@@ -1,4 +1,4 @@
-import { PlayerColor, PlayerOptions } from '../players/types'
+import { Player, PlayerColor, PlayerOptions } from '../players/types'
 import { Chip } from '../chips/types'
 
 // global
@@ -112,14 +112,12 @@ export interface State {
   id?: ID,
   slots: number,
   fields: GameField[],
-
   modal: Modal,
-
   dices: {
     show: boolean,
     values: DiceProps
   },
-
   isInitialized: boolean,
-  turn: number
+  isStarted: boolean,
+  winner: Player | null
 }

@@ -17,7 +17,7 @@ function LeaveGameModal () {
   }
 
   const leave = () => {
-    socket.emit('leave-game')
+    socket.emit('game:player-leave')
     cancel()
     router.navigate('home')
   }

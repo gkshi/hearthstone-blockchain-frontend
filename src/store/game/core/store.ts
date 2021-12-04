@@ -6,42 +6,37 @@ import {
   showGameModal,
   hideGameModal,
   rollTheDice,
-  hideDices, buyField, showDices
+  hideDices,
+  buyField,
+  showDices,
+  setWinner, clearAllGameData
 } from './events'
 import { setLog } from '../../logs/events'
 import { Company, Modal, State } from './types'
-import { generateFieldSet, getGameConfig } from '../../../helpers/game'
-import { setActivePlayer, setPlayerSet } from '../players/events'
-import { detectChipPositions, setChipSet } from '../chips/events'
-import { Client } from '../players/types'
-import $gamePlayers from '../players/store'
+import { generateFieldSet } from '../../../helpers/game'
+import { clearAllPlayersData, setPlayerSet } from '../players/events'
+import { clearAllChipsData, detectChipPositions, setChipSet } from '../chips/events'
+import { Player } from '../players/types'
+// import { Client } from '../players/types'
 
 const initialState = (): State => ({
   id: null,
   slots: 0,
   fields: [],
-
   modal: null,
-
   dices: {
     show: false,
     values: []
   },
-
-  turn: 0,
-  isInitialized: false
+  isInitialized: false,
+  isStarted: false,
+  winner: null
 })
 
 export const $game = createStore<State>(initialState())
   .on(initGame, (state, data) => {
     setLog('Game initialized.')
     const fields = generateFieldSet()
-    const gameConfig = getGameConfig(data.rules)
-    const initialBalance = gameConfig.initialBalance
-    setPlayerSet({
-      clients: (data.players as Client[]),
-      initialBalance
-    })
 
     return {
       ...state,
@@ -49,15 +44,19 @@ export const $game = createStore<State>(initialState())
       payers: data.players,
       slots: data.slots,
       fields,
-      isInitialized: true
+      isInitialized: true,
+      isStarted: false
     }
   })
 
   .on(syncGame, (state, data) => {
+    setPlayerSet(data.players as Player[])
     setChipSet(data.chips.list)
     setTimeout(() => detectChipPositions(), 0)
-    setLog('Game started.')
-    return state
+    if (!state.isStarted) {
+      setLog('Game started.')
+    }
+    return { ...state, isStarted: true }
   })
 
   .on(resetGame, (state) => {
@@ -104,6 +103,17 @@ export const $game = createStore<State>(initialState())
       return field
     })
     return { ...state, fields }
+  })
+
+  .on(setWinner, (state, winner) => {
+    console.log('# setWinner', winner)
+    return { ...state, winner }
+  })
+
+  .on(clearAllGameData, state => {
+    clearAllChipsData()
+    clearAllPlayersData()
+    return initialState()
   })
 
 export default $game

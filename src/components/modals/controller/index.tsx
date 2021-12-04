@@ -3,6 +3,7 @@ import { $modals } from '../../../store/modals/store'
 
 import SampleModal from '../sample'
 import LeaveGameModal from '../leave-game'
+import GameFinishedModal from '../game-finished'
 
 import './_index.scss'
 
@@ -22,6 +23,7 @@ function ModalController () {
     <div className={`component -modal-controller ${show ? '-active' : ''}`}>
       <SampleModal />
       <LeaveGameModal />
+      <GameFinishedModal />
     </div>
   )
 }

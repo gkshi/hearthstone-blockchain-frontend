@@ -20,7 +20,7 @@ function RoomCreatorComponent () {
   }
 
   useEffect(() => {
-    socket.on('game-starts', data => {
+    socket.on('game:start', data => {
       initGame(data)
       router.navigate('game')
     })

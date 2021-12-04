@@ -178,10 +178,10 @@ export const calculateChipCoordinates = (chipId) => {
   }
 }
 
-export const generatePlayerSet = (clients, initialBalance) => {
+export const generatePlayerSet = clients => {
   return clients.map((client, i) => {
     client.color = chipColors[i]
-    return new Player(client, initialBalance)
+    return new Player(client)
   })
 }
 

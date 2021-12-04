@@ -9,3 +9,5 @@ export const setActiveChip = GameChipsDomain.createEvent<PlayerColor>('set activ
 export const moveChip = GameChipsDomain.createEvent<MoveChipProps>('set chip field')
 
 export const detectChipPositions = GameChipsDomain.createEvent('detect chip positions')
+
+export const clearAllChipsData = GameChipsDomain.createEvent<void>('clear all data')

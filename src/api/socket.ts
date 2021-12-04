@@ -16,6 +16,7 @@ const addSocketListeners = socket => {
   })
 
   socket.on('sync', (data: SyncData) => {
+    console.log('# sync', data)
     data.hasActiveGame
       ? showNotification('has-active-game')
       : hideNotification('has-active-game')
@@ -26,16 +27,9 @@ const addSocketListeners = socket => {
     addRoom(data)
   })
 
-  socket.on('game-starts', () => {
+  socket.on('game:start', () => {
     showNotification({
       heading: 'Game starts'
-    })
-  })
-
-  socket.on('game-left', id => {
-    showNotification({
-      heading: 'You left the game',
-      content: `ID #${id}`
     })
   })
 

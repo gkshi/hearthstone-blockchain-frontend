@@ -1,5 +1,6 @@
 import { GameDomain } from './domain'
 import { DiceProps, GameData, ModalProps, FieldBuyingProps } from './types'
+import { Player } from '../players/types'
 
 export const initGame = GameDomain.createEvent<GameData>('init game')
 export const syncGame = GameDomain.createEvent<GameData>('sync game')
@@ -13,3 +14,7 @@ export const showDices = GameDomain.createEvent<void>('show dices')
 export const hideDices = GameDomain.createEvent<void>('hide dices')
 
 export const buyField = GameDomain.createEvent<FieldBuyingProps>('buy field')
+
+export const setWinner = GameDomain.createEvent<Player>('set winner')
+
+export const clearAllGameData = GameDomain.createEvent<void>('clear all game data')

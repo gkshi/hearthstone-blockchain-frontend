@@ -18,6 +18,9 @@ function GamePlayerComponent ({ data }: GamePlayerProps) {
     if (storedActivePlayer && storedActivePlayer._id === data._id) {
       str += ' -active'
     }
+    if (data.hasLeft) {
+      str += ' -has-left'
+    }
     return str
   }
 
@@ -31,7 +34,12 @@ function GamePlayerComponent ({ data }: GamePlayerProps) {
 
       <div className="middle">
         <div className="name">{data.name}</div>
-        <div className="balance">{shortCurrencyValue(data.balance)}</div>
+        <div className="sub-text">
+          {data.hasLeft
+            ? <div>left the game</div>
+            : <div>{shortCurrencyValue(data.balance)}</div>
+          }
+        </div>
       </div>
 
       <div className="right">

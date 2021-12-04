@@ -23,18 +23,18 @@ export interface Player {
   color: PlayerColor,
   balance?: Price,
   photo?: string,
-  isActive: boolean
+  hasLeft: boolean
 }
 
 // eslint-disable-next-line no-redeclare
 export class Player {
-  constructor (props, initialBalance) {
+  constructor (props) {
     this._id = props._id
     this.name = props.name || `Player #${props.id}`
     this.color = props.color
-    this.balance = initialBalance
+    this.balance = props.balance
     this.photo = props.photo
-    this.isActive = false
+    this.hasLeft = props.hasLeft
   }
 }
 
