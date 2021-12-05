@@ -31,6 +31,8 @@ function RoomCreatorComponent () {
     socket.on('sync', data => {
       setDisabled(data.hasCreatedRoom)
     })
+
+    return () => {}
   }, [])
 
   return (
