@@ -6,8 +6,11 @@ import { initGame } from '../../store/game/core/events'
 
 import UIButton from '../../components/ui/button'
 
+import './_index.scss'
+
 function RoomCreatorComponent () {
   const [slots, setSlots] = useState(4)
+  const [disabled, setDisabled] = useState(false)
   const socket = $socket.getState().socket
   const router = useRouter()
 
@@ -24,10 +27,14 @@ function RoomCreatorComponent () {
       initGame(data)
       router.navigate('game')
     })
+
+    socket.on('sync', data => {
+      setDisabled(data.hasCreatedRoom)
+    })
   }, [])
 
   return (
-    <div className="component -room-creator">
+    <div className={`component -room-creator ${disabled ? '-disabled' : ''}`}>
       <div>room creator</div>
       <div>
         <span>slots:</span>

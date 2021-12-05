@@ -1,0 +1,6 @@
+.component.-room-creator {
+  &.-disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+}

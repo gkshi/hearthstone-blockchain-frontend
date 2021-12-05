@@ -7,6 +7,7 @@ export type ID = string | number
 
 export interface SyncData {
   hasActiveGame: boolean,
+  hasCreatedRoom: boolean,
   rooms: Room[]
 }
 
