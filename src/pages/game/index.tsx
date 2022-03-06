@@ -37,12 +37,14 @@ function GamePage () {
 
   useEffect(() => {
     socket.on('sync', (data: SyncData) => {
+      console.log('# sync', data)
       if (!data.hasActiveGame) {
         exitFromGamePage()
       }
     })
 
     socket.on('game:sync', data => {
+      console.log('# game:sync', data)
       if (!data) {
         exitFromGamePage()
         return
@@ -78,6 +80,8 @@ function GamePage () {
     })
 
     socket.emit('game:sync')
+
+    return () => {}
   }, [])
 
   return (

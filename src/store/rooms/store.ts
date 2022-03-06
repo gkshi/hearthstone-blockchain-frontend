@@ -1,5 +1,5 @@
 import { createStore } from 'effector'
-import { addRoom, setRooms } from './events'
+import { addRoom, removeRoom, setRooms } from './events'
 import { State, Room } from './types'
 import { showNotification } from '../notifications/events'
 
@@ -17,6 +17,10 @@ export const $rooms = createStore<State>(initialState)
 
   .on(setRooms, (state, rooms) => {
     return rooms
+  })
+
+  .on(removeRoom, (state, roomID) => {
+    return state.filter(i => i.id !== roomID)
   })
 
 export default $rooms

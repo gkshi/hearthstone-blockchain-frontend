@@ -1,5 +1,5 @@
 import { createStore } from 'effector'
-import { generatePlayerSet } from '../../../helpers/game'
+// import { generatePlayerSet } from '../../../helpers/game'
 import { clearAllPlayersData, dropPlayer, setActivePlayer, setPlayerSet } from './events'
 import { setActiveChip } from '../chips/events'
 import { setLog } from '../../logs/events'

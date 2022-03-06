@@ -2,8 +2,7 @@ export default [
   {
     name: 'home',
     path: '/',
-    private: true,
-    forGuests: false
+    private: true
   },
 
   {

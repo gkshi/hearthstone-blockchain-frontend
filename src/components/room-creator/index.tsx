@@ -3,6 +3,7 @@ import { useRouter } from 'react-router5'
 import { $socket } from '../../store/socket/store'
 import { $auth } from '../../store/auth/store'
 import { initGame } from '../../store/game/core/events'
+import { removeRoom } from '../../store/rooms/events'
 
 import UIButton from '../../components/ui/button'
 
@@ -23,8 +24,9 @@ function RoomCreatorComponent () {
   }
 
   useEffect(() => {
-    socket.on('game:start', data => {
-      initGame(data)
+    socket.on('game:start', payload => {
+      initGame(payload.game)
+      removeRoom(payload.fromRoom)
       router.navigate('game')
     })
 
@@ -32,7 +34,9 @@ function RoomCreatorComponent () {
       setDisabled(data.hasCreatedRoom)
     })
 
-    return () => {}
+    return () => {
+      socket.off('sync')
+    }
   }, [])
 
   return (
