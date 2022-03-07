@@ -6,13 +6,15 @@ import { $auth } from '../store/auth/store'
 import { addRoom, setRooms } from '../store/rooms/events'
 import { SyncData } from '../react-app-env'
 
-const addSocketListeners = socket => {
+const addSocketListeners = (socket, storedSocket) => {
   socket.on('connect', () => {
-    showNotification({
-      type: 'success',
-      heading: 'Socket connected',
-      content: `ID #${socket.id}`
-    })
+    if (!storedSocket) {
+      showNotification({
+        type: 'success',
+        heading: 'Socket connected',
+        content: 'Connected to server successfully.'
+      })
+    }
   })
 
   socket.on('sync', (data: SyncData) => {
@@ -54,7 +56,7 @@ export const connect = () => {
     }
   })
 
-  addSocketListeners(socket)
+  addSocketListeners(socket, storedSocket)
 
   setSocket(socket)
 }

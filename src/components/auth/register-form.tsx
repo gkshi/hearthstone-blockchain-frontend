@@ -127,7 +127,7 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
 
         <div className="button-block">
           <UIButton type="submit" loading={isLoading} fullWidth={true}>
-            sign_up
+            Sign up
           </UIButton>
         </div>
         <div>

@@ -3,24 +3,38 @@ import { Link } from 'react-router5'
 import { useStore } from 'effector-react'
 import { $auth } from '../../store/auth/store'
 
+import UIButton from '../ui/button'
+
 import './_index.scss'
 
 function HeaderComponent () {
   const user = useStore($auth).user
 
+  const username = () => {
+    return user ? user.username : 'guest'
+  }
+
   return (
     <div className="component -header">
-      <nav>
-        <div>
-          <Link routeName="home">home</Link>
+      <div className="container -wide flex a-center j-between">
+        <nav>
+          <div>
+            <UIButton routeName="home">Play</UIButton>
+          </div>
+          <div className="item">
+            <Link routeName="home">Home</Link>
+          </div>
+          <div className="item">
+            <Link routeName="about">About</Link>
+          </div>
+        </nav>
+
+        <div className="right">
+          {user && <div className="item">
+            <Link routeName="profile">{username()}</Link>
+          </div>}
         </div>
-        <div>
-          <Link routeName="about">about</Link>
-        </div>
-        {user && <div>
-          <Link routeName="profile">profile</Link>
-        </div>}
-      </nav>
+      </div>
     </div>
   )
 }

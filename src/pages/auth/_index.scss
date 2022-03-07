@@ -8,4 +8,21 @@
   h1 {
     margin-bottom: 10px;
   }
+
+  .demo-accounts {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: $border-radius-extra-large;
+    background: $color-content-bg;
+
+    .items {
+      margin-top: 10px;
+
+      & > * {
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
 }

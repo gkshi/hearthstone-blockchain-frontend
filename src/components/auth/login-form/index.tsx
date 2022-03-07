@@ -133,7 +133,7 @@ function LoginForm ({ onRegisterShow }: LoginFormOptions) {
 
         <div className="button-block">
           <UIButton type="submit" loading={isLoading} fullWidth={true}>
-            sign_in
+            Sign in
           </UIButton>
         </div>
         <div>

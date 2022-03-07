@@ -94,7 +94,7 @@ function GameDiceComponent () {
 
   const setValuesAndStop = () => {
     if (storedDices.values.length && minAnimationShown) {
-      setLog(`Брошены кости (${storedDices.values.toString()}).`)
+      setLog(`Rolling the dice (${storedDices.values.toString()}).`)
       stopAnimate()
       setTimeout(hide, delayAfterSet)
     }

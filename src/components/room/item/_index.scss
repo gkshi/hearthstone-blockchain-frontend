@@ -1,12 +1,22 @@
 .component.-room {
-  width: 400px;
-  padding: 10px 20px;
-  background: #ccc;
+  width: 100%;
 
   .slots {
     & > * {
       &:not(:last-child) {
-        margin-right: 10px;
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .close-button {
+    margin-top: 20px;
+
+    .button {
+      width: 100%;
+
+      & > * {
+        width: 100%;
       }
     }
   }

@@ -10,7 +10,7 @@ import UIButton from '../../components/ui/button'
 import './_index.scss'
 
 function RoomCreatorComponent () {
-  const [slots, setSlots] = useState(4)
+  const [slots, setSlots] = useState(2)
   const [disabled, setDisabled] = useState(false)
   const socket = $socket.getState().socket
   const router = useRouter()
@@ -41,13 +41,20 @@ function RoomCreatorComponent () {
 
   return (
     <div className={`component -room-creator ${disabled ? '-disabled' : ''}`}>
-      <div>room creator</div>
-      <div>
-        <span>slots:</span>
-        <input type="number" value={slots} min={2} max={5} onChange={e => setSlots(+e.target.value)} />
-      </div>
-      <div>
-        <UIButton onClick={createRoom}>create</UIButton>
+      <div className="intro">
+        <div className="flex a-center j-between">
+          <div>Room creator</div>
+          <div className="flex center">
+            <div>player slots:</div>
+            <div>
+              <input type="number" value={slots} min={2} max={5} onChange={e => setSlots(+e.target.value)} />
+            </div>
+          </div>
+        </div>
+
+        <div className="button">
+          <UIButton onClick={createRoom}>Create new room</UIButton>
+        </div>
       </div>
     </div>
   )

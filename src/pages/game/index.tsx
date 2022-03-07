@@ -86,7 +86,7 @@ function GamePage () {
 
   return (
     <div className="page -game">
-      <div className="page-parent">
+      <div className="page-parent flex center">
         <div className="page-parent-intro flex center">
           <aside className="game-aside flex column j-between">
             <GamePlayers />

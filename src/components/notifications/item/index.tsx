@@ -37,7 +37,7 @@ function NotificationComponent ({ data, children }: NotificationProps) {
         <IconCross />
       </div>}
 
-      {data.heading && <div>{data.heading}</div>}
+      {data.heading && <div className="heading">{data.heading}</div>}
 
       {children
         ? <div>{children}</div>

@@ -4,6 +4,8 @@ import { $rooms } from '../../../store/rooms/store'
 import { $socket } from '../../../store/socket/store'
 
 import Room from '../item'
+import IconOptions from '../../icons/options'
+import IconPlayers from '../../icons/player'
 
 import './_index.scss'
 
@@ -24,7 +26,20 @@ function RoomListComponent () {
 
   return (
     <div className="component -room-list">
-      {list()}
+      <div className="filter-bar flex a-center j-between">
+        <div>Rooms created: {rooms.length}</div>
+        <div className="options flex a-center">
+          <div className="filter-item -disabled flex a-center">
+            <IconOptions />
+            <div>rules: classic</div>
+          </div>
+          <div className="filter-item -disabled flex a-center">
+            <IconPlayers />
+            <div>players: 2-5</div>
+          </div>
+        </div>
+      </div>
+      {rooms.length ? <div className="list">{list()}</div> : null}
     </div>
   )
 }

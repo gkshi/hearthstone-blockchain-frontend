@@ -1,6 +1,27 @@
+@import "src/assets/scss/variables";
+
 .component.-room-creator {
+  width: 400px;
+  padding: 30px 60px;
+  background: $color-content-bg;
+  border-radius: $border-radius-extra-large;
+
+  .button {
+    margin-top: 20px;
+
+    .button {
+      width: 100%;
+      & > * {
+        width: 100%;
+      }
+    }
+  }
+
   &.-disabled {
-    opacity: .5;
     pointer-events: none;
+
+    .intro {
+      opacity: .35;
+    }
   }
 }

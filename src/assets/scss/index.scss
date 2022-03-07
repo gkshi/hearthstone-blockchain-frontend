@@ -12,8 +12,12 @@ body {
   font-size: $font-size-regular;
   line-height: $line-height-regular;
   font-weight: $font-weight-medium;
-  background: $color-page-bg;
-  color: $color-text-regular;
+  background: $color-page-bg-dark;
+  color: $color-text-light;
+}
+
+a {
+  color: inherit;
 }
 
 .container {
@@ -23,5 +27,9 @@ body {
 
   &.-narrow {
     width: 330px;
+  }
+
+  &.-wide {
+    width: 1200px;
   }
 }

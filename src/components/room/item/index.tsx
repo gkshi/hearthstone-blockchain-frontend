@@ -4,6 +4,7 @@ import { useStore } from 'effector-react'
 import { Room } from '../../../store/rooms/types'
 
 import RoomSlot from '../slot'
+import UIButton from '../../ui/button'
 
 import './_index.scss'
 import $socket from '../../../store/socket/store'
@@ -78,6 +79,7 @@ function RoomComponent ({ data }: RoomComponentProps) {
     }
     return arr.map(i => <RoomSlot
       player={data.players[i]}
+      host={data.host}
       key={i}
       index={i}
       joinable={isJoinable(i)}
@@ -91,12 +93,11 @@ function RoomComponent ({ data }: RoomComponentProps) {
 
   return (
     <div className="component -room">
-      <div>room #{data.id}</div>
       <div className="slots flex a-center j-start">
         {slots()}
       </div>
-      {isHost() && <div>
-        <a href="#" onClick={closeRoom}>close room</a>
+      {isHost() && <div className="close-button">
+        <UIButton size="small" theme="danger" onClick={closeRoom}>Close room</UIButton>
       </div>}
     </div>
   )

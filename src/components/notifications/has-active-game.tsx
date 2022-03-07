@@ -11,7 +11,7 @@ function HasActiveGameNotification () {
 
   const data = {
     id: 'has-active-game',
-    heading: 'You have an open game!',
+    heading: 'You have an opened game!',
     infinite: true,
     closable: false
   } as NotificationOptions
@@ -27,7 +27,7 @@ function HasActiveGameNotification () {
 
   return (
     <Notification data={data}>
-      <UIButton onClick={openGame}>Open game</UIButton>
+      <UIButton className="-full" onClick={openGame}>Play</UIButton>
     </Notification>
   )
 }

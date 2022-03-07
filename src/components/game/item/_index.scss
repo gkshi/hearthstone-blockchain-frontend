@@ -111,6 +111,7 @@
   background: $color-game-table-bg;
   color: $color-text-regular;
   cursor: default;
+  user-select: none;
 
   .intro {
     width: 100%;

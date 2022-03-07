@@ -14,7 +14,7 @@ function DefaultLayout ({ children }: LayoutProps) {
     <div className="layout -default">
       <HeaderComponent />
       <main>
-        <div className="container">
+        <div className="container -wide">
           {children}
         </div>
       </main>

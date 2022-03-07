@@ -1,13 +1,18 @@
 import React from 'react'
 import { Player } from '../../../store/game/players/types'
+import { ID } from '../../../react-app-env'
 
 import Loader from '../../loader'
+import IconCross from '../../icons/cross'
+import IconPlayer from '../../icons/player'
+import IconPlus from '../../icons/plus'
 
 import './_index.scss'
 
 interface RoomSlotComponentProps {
   index: number,
   player?: Player,
+  host?: ID,
   joinable: boolean,
   exitable: boolean,
   droppable: boolean,
@@ -37,19 +42,35 @@ function RoomSlotComponent (props: RoomSlotComponentProps) {
   }
 
   const player = () => {
-    if (props.player) {
-      return <div>player {props.player.name}</div>
-    }
-    return null
+    return props.player ? props.player.name : null
   }
 
   return (
     <div className="component -room-slot">
-      {player()}
-      {isWaiting() && <Loader />}
-      {props.droppable && <a href="#" onClick={e => drop(e)}>drop</a>}
-      {props.exitable && <a href="#" onClick={e => exit(e)}>exit</a>}
-      {props.joinable && <a href="#" onClick={e => join(e)}>join</a>}
+      {props.droppable && <a href="#" onClick={e => drop(e)}>
+        <div className="cross">
+          <IconCross />
+        </div>
+      </a>}
+      {props.exitable && props.host !== props.player._id && <a href="#" onClick={e => exit(e)}>
+        <div className="cross">
+          <IconCross />
+        </div>
+      </a>}
+
+      <div className="circle flex center">
+        {player() ? <IconPlayer /> : null}
+        {isWaiting() && <Loader />}
+        {props.joinable && <a className="icon-plus" href="#" onClick={e => join(e)}>
+          <IconPlus />
+        </a>}
+      </div>
+
+      <div className="text">
+        {props.joinable && 'Join'}
+        {player() || <span>&nbsp;</span>}
+        {isWaiting() && <span>Waiting...</span>}
+      </div>
     </div>
   )
 }
