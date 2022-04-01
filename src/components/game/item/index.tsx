@@ -44,8 +44,16 @@ function GameItemWrapper ({ row, data, tooltipPlacement }: GameItemProps) {
     }
   }
 
+  const classList = () => {
+    let str = `field-tooltip -color-${data.color}`
+    if (data.owner) {
+      str += ` -owner-${data.owner}`
+    }
+    return str
+  }
+
   const tooltip = () => {
-    return <div className={`field-tooltip -color-${data.color}`}>
+    return <div className={classList()}>
       <header>
         <div className="name">{data.name}</div>
         <div className="category">{data.category}</div>

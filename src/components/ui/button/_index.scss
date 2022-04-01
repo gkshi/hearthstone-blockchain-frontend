@@ -72,6 +72,17 @@
         }
       }
     }
+
+    &-light {
+      & > * {
+        background: darken($color-text-light, 4%);
+        color: $color-text-regular;
+
+        &:hover {
+          background: darken($color-text-light, 8%);
+        }
+      }
+    }
   }
 
   &.-size {

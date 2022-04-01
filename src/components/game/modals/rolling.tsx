@@ -18,7 +18,7 @@ function TurnGameModalComponent () {
   }
 
   return (
-    <GameModalWrapper id="turn">
+    <GameModalWrapper id="rolling">
       <div className="heading">Your turn</div>
       <div>It&apos;s your turn, good luck!</div>
 

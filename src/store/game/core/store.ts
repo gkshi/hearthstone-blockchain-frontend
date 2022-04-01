@@ -28,6 +28,7 @@ const initialState = (): State => ({
     show: false,
     values: []
   },
+  currentAction: '',
   isInitialized: false,
   isStarted: false,
   winner: null
@@ -56,7 +57,7 @@ export const $game = createStore<State>(initialState())
     if (!state.isStarted) {
       setLog('Game started.')
     }
-    return { ...state, isStarted: true }
+    return { ...state, isStarted: true, fields: data.fields }
   })
 
   .on(resetGame, (state) => {
@@ -66,6 +67,10 @@ export const $game = createStore<State>(initialState())
 
   .on(showGameModal, (state, data) => {
     const modal = new Modal(data)
+    console.log('state', state.dices)
+    if (state.dices.show) {
+      console.log('поставить в очередь')
+    }
     return { ...state, modal }
   })
 

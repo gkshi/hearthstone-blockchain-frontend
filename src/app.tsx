@@ -18,7 +18,7 @@ import NotFoundPage from './pages/not-found'
 import Loader from './components/loader'
 import ModalController from './components/modals/controller'
 
-const SIMPLE_LAYOUT_PAGES = ['@@router5/UNKNOWN_ROUTE']
+const SIMPLE_LAYOUT_PAGES = ['auth', '@@router5/UNKNOWN_ROUTE']
 const CLEAN_LAYOUT_PAGES = ['game']
 
 function App () {

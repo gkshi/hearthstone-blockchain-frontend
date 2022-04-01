@@ -24,10 +24,29 @@ function GamePage () {
 
   const setActivePlayerAndShowDices = (player: Player) => {
     setActivePlayer(player._id)
-    if (player._id === user._id) {
-      showGameModal({
-        type: 'turn'
-      })
+  }
+
+  const syncGameModal = (data) => {
+    if (data.activePlayer._id === user._id) {
+      console.log('syncGameModal', data.currentAction)
+      switch (data.currentAction) {
+        case 'rolling':
+          console.log('show rolling')
+          showGameModal({
+            type: 'rolling'
+          })
+          break
+        case 'buying':
+          showGameModal({
+            type: 'buying'
+          })
+          break
+        case 'rent':
+          showGameModal({
+            type: 'rent'
+          })
+          break
+      }
     }
   }
 
@@ -53,6 +72,7 @@ function GamePage () {
         initGame(data)
       }
       syncGame(data)
+      syncGameModal(data)
       setActivePlayerAndShowDices(data.activePlayer)
     })
 
@@ -62,6 +82,12 @@ function GamePage () {
 
     socket.on('game:roll-the-dice', (values: [number, number]) => {
       rollTheDice(values)
+    })
+
+    socket.on('game:field-bought', field => {
+      console.log('game:field-bought', field)
+      console.log('game', game)
+      console.log('asd', game.fields.find(i => i.id === field.id))
     })
 
     socket.on('game:player-left', playerId => {

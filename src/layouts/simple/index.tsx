@@ -9,9 +9,7 @@ const SimpleLayout: React.FC = ({ children }) => {
   return (
     <div className="layout -simple">
       <main>
-        <div className="container">
-          {children}
-        </div>
+        {children}
       </main>
 
       <NotificationController />

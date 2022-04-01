@@ -13,7 +13,9 @@ export interface GameData {
   players: PlayerOptions[],
   chips: {
     list: Chip[]
-  }
+  },
+  fields: Field[],
+  currentAction: string
 }
 
 export type GameField = Field | Company
@@ -56,7 +58,8 @@ export interface FieldData {
   name?: string,
   type?: FieldType,
   category?: string,
-  color?: FieldColor
+  color?: FieldColor,
+  owner?: PlayerColor | null
 }
 
 export interface Company extends Field {
@@ -80,7 +83,7 @@ export class Company extends Field {
 }
 
 // modals
-export type ModalType = 'turn' | 'buying' | 'tax'
+export type ModalType = 'rolling' | 'buying' | 'rent'
 
 export interface ModalProps {
   id?: string,
@@ -117,6 +120,7 @@ export interface State {
     show: boolean,
     values: DiceProps
   },
+  currentAction: 'rolling' | 'buying' | 'deal' | '',
   isInitialized: boolean,
   isStarted: boolean,
   winner: Player | null

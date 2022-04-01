@@ -39,7 +39,11 @@ function RoomListComponent () {
           </div>
         </div>
       </div>
-      {rooms.length ? <div className="list">{list()}</div> : null}
+      <div className="list">
+        {rooms.length
+          ? list()
+          : <div>No active rooms yet. You may create one --&#62;</div>}
+      </div>
     </div>
   )
 }

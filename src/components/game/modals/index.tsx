@@ -2,7 +2,9 @@ import React from 'react'
 import { useStore } from 'effector-react'
 import { $game } from '../../../store/game/core/store'
 
-import TurnModal from './turn'
+import RollingModal from './rolling'
+import BuyingModal from './buying'
+import RentModal from './rent'
 
 import './_index.scss'
 
@@ -15,7 +17,9 @@ function GameModalsComponent () {
 
   return (
     <div className="component -game-modals">
-      <TurnModal />
+      <RollingModal />
+      <BuyingModal />
+      <RentModal />
     </div>
   )
 }
